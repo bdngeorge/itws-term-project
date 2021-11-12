@@ -18,13 +18,12 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 input{
   font-size: 1em;
-}
-input[type=text]{
+  margin-top: 1em;
   height: 3em;
   width: 50em;
 }

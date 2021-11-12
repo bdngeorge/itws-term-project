@@ -5,6 +5,11 @@
     <title>TextbookBuddy - Login</title>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="../general.css">
+    <script 
+      src="https://code.jquery.com/jquery-3.6.0.min.js" 
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+      crossorigin="anonymous">
+    </script>
     <script type="text/javascript" src="../scripts/form-validation.js"></script>
   </head>
   <body>
@@ -21,10 +26,10 @@
 
     <section class="center-items center-self body">
       <h2 class="bold">Login</h3>
-      <form name="login" class="form" action="" method="post">
-        <input type="text" id="email" name="email" placeholder="RPI Email:" class="left"><br>
-        <input type="text" id="password" name="password" placeholder="Password:" class="left"><br>
-        <input type="submit" value="Submit" class="button">
+      <form id="login" name="login" class="form" action="#" method="post" onsubmit="return validateLogin(this);">
+        <input type="email" id="email" name="email" placeholder="RPI Email:" class="left"><br>
+        <input type="password" id="password" name="password" placeholder="Password:" class="left"><br>
+        <input type="submit" id="lsubmit" value="Submit" class="button">
       </form>
       <button type="button" onclick="window.location.href='../signup/signup.html'" class="button">Sign Up</button>
     </section>

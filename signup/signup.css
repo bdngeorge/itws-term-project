@@ -23,8 +23,7 @@ h2 {
 
 input{
   font-size: 1em;
-}
-input[type=text]{
+  margin-top: 1em;
   height: 3em;
   width: 50em;
 }
