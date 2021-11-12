@@ -21,7 +21,7 @@
 
     <section class="center-items center-self body">
       <h2 class="bold">Sign Up</h3>
-      <form name="signup" class="form" action="#" method="post" onsubmit="return validateLogin(this);">
+      <form name="signup" class="form" action="#" method="post" onsubmit="event.preventDefault(); validateSignUp(this);">
         <input type="text" id="fname" name="fname" placeholder="First Name:" class="left"><br>
         <input type="text" id="lname" name="lname" placeholder="Last Name:" class="left"><br>
         <input type="email" id="email" name="email" placeholder="RPI Email:" class="left"><br>

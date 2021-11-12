@@ -1,7 +1,7 @@
 h2 {
-  padding-bottom: .5em; 
+  padding-bottom: 1vw; 
 	font-variant: small-caps;
-  font-size: 4em;
+  font-size: 3.5vw;
 }
 
 .body {
@@ -11,7 +11,6 @@ h2 {
   flex-direction: column;
   width: 50%;
   height: 60%;
-  box-shadow: 1em;
 }
 
 .form {
@@ -22,20 +21,20 @@ h2 {
 }
 
 input{
-  font-size: 1em;
+  font-size: .8vw;
   margin-top: 1em;
-  height: 3em;
-  width: 50em;
+  height: 2.5vw;
+  width: 40vw;
 }
 input[type=submit] {
-  width: 10em;
-  height: 2em;
+  width: 10vw;
+  height: 2vw;
   border:0 none;
 }
 button {
   transform: translateY(20%);
-  font-size: 1em;
+  font-size: .8vw;
   border:0 none;
-  width: 10em;
-  height: 2em;
+  width: 10vw;
+  height: 2vw;
 }
