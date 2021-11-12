@@ -1,0 +1,40 @@
+h2 {
+  padding-bottom: 1vw; 
+	font-variant: small-caps;
+  font-size: 3.5vw;
+}
+
+.body {
+  background-color: rgb(241, 239, 239);
+  border: 1px solid rgb(179, 177, 177);
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 50%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input{
+  font-size: .8vw;
+  margin-top: 1em;
+  height: 2.5vw;
+  width: 40vw;
+}
+input[type=submit] {
+  width: 10vw;
+  height: 2vw;
+  border:0 none;
+}
+button {
+  transform: translateY(20%);
+  font-size: .8vw;
+  border:0 none;
+  width: 10vw;
+  height: 2vw;
+}
