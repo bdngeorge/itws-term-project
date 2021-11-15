@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  // $_SESSION is a superglobal variable 
+  echo $_SESSION['userEmail'] ;
+?>
 <!DOCTYPE html>
 <html>
   <head>

@@ -1,25 +1,26 @@
 <?php
-
+  session_start();
   include ('../database/dbconnect.php');
   if ($dbOK) {
-    // if($_SERVER['REQUEST_METHOD'] == 'POST')
-    if (isset($_POST['login']))
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    // if (isset($_POST['login']))
     {
       $email = $_POST['login']['email'];
       $password = $_POST['login']['password'];
          
       // error checking 
-      
-      $query = "select from users where email = '$email'";
-      $result = mysqli_query($conn, $query);
 
-      if($result && mysqli_num_rows($result)===1)
+      $query = "select * from users where email = '$email'";
+      $result = mysqli_query($conn, $query);
+      
+      echo mysqli_num_rows($result);
+      if($result && mysqli_num_rows($result) > 0)
       {      
         $user_data = mysqli_fetch_assoc($result);
         
         if($user_data['password'] === $password) 
         {
-          $_SESSION['user'] = $user_data['email'];
+          $_SESSION['userEmail'] = $user_data['email'];
           // redirect to Home page
           header("Location: ../");
           die;

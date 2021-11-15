@@ -5,7 +5,7 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT primary key NOT NULL
     , fname VARCHAR(20) NOT NULL
     , lname VARCHAR(20) NOT NULL
-    , email VARCHAR(10) UNIQUE NOT NULL
+    , email VARCHAR(20) UNIQUE NOT NULL
     , password VARCHAR(100) NOT NULL
 );
 
