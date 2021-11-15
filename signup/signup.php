@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  // include("../resources/connection.php");
+  // include("../resources/functions.php");
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,7 +35,7 @@
         <input type="password" id="password" name="password" placeholder="Password:" class="left"><br>
         <input type="submit" value="Submit">
       </form>
-      <button type="button" onclick="window.location.href='../login/login.html'" class="button">Back to Login</button>
+      <button type="button" onclick="window.location.href='../login/login.php'" class="button">Back to Login</button>
     </section>
     
     <footer>
