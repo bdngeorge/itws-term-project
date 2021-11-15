@@ -1,21 +1,15 @@
 <?php
 
-  include ('../resources/dbconnect.php');
+  include ('../database/dbconnect.php');
   if ($dbOK) {
-    echo "dkOK ";
-
-   
     // if($_SERVER['REQUEST_METHOD'] == 'POST')
     if (isset($_POST['login']))
     {
       $email = $_POST['login']['email'];
       $password = $_POST['login']['password'];
-      
-      echo $email . " ". $password . " ";
-   
+         
       // error checking 
-
-
+      
       $query = "select from users where email = '$email'";
       $result = mysqli_query($conn, $query);
 

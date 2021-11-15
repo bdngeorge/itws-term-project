@@ -1,7 +1,22 @@
 <?php
   session_start();
-  // include("../resources/connection.php");
-  // include("../resources/functions.php");
+  include ('../database/dbconnect.php');
+
+   if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+   {
+      $fname = $_POST['fname'];
+      $lname = $_POST['lname'];
+      $email = $_POST['email'];
+      $pass  = $_POST['password'];
+
+      // call javascript function ??
+
+      $query = "insert into users(fname, lname, email, password) values('$fname', '$lname', '$email', '$pass')";
+
+      mysqli_query($conn, $query);
+
+      header("Location: ../");
+   }
 
 ?>
 
@@ -28,7 +43,8 @@
 
     <section class="center-items center-self body">
       <h2 class="bold">Sign Up</h3>
-      <form name="signup" class="form" action="#" method="post" onsubmit="event.preventDefault(); validateSignUp(this);">
+      <form name="signup" class="form" action="#" method="post" >
+        <!-- onsubmit="event.preventDefault(); validateSignUp(this);"> -->
         <input type="text" id="fname" name="fname" placeholder="First Name:" class="left"><br>
         <input type="text" id="lname" name="lname" placeholder="Last Name:" class="left"><br>
         <input type="email" id="email" name="email" placeholder="RPI Email:" class="left"><br>
