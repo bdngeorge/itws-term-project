@@ -10,12 +10,13 @@
       $pass  = $_POST['password'];
 
       // call javascript function ??
+      // or do error handling here
 
       $query = "insert into users(fname, lname, email, password) values('$fname', '$lname', '$email', '$pass')";
 
       mysqli_query($conn, $query);
 
-      header("Location: ../");
+      header("Location: ../login/login.php");
    }
 
 ?>
@@ -49,6 +50,7 @@
         <input type="text" id="lname" name="lname" placeholder="Last Name:" class="left"><br>
         <input type="email" id="email" name="email" placeholder="RPI Email:" class="left"><br>
         <input type="password" id="password" name="password" placeholder="Password:" class="left"><br>
+        <!-- can you make this button bigger? --> 
         <input type="submit" value="Submit">
       </form>
       <button type="button" onclick="window.location.href='../login/login.php'" class="button">Back to Login</button>

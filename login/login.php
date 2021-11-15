@@ -59,7 +59,7 @@
 
 
     <section class="center-items center-self body">
-      <h2 class="bold">Login</h3>
+      <h2 class="bold">Login</h2>
       <form id="login" name="login" class="form" action="#" method="post" 
       >
       <!-- onsubmit="event.preventDefault(); validateLogin(this);"
