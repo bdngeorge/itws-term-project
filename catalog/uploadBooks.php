@@ -1,32 +1,27 @@
 <?php
   session_start();
-  include("../database/dbconnect.php");
+  include("../includes/dbconnect.php");
 
   $userEmail= $_SESSION['userEmail'];
-
+  echo $userEmail;
   if ($_SERVER["REQUEST_METHOD"] === 'POST')
   {
     $title = $_POST['title'];
     $authors = $_POST['authors'];
     $isbn  = $_POST['isbn'];
-    // $subj  = $_POST['subj'];
-    $desc  = $_POST['description'];
+    $subj  = $_POST['subj'];
+    $desc  = $_POST['desc'];
     $cond  = $_POST['cond'];
     $price  = $_POST['price'];
     $img   = $_POST['attachment'];
 
-    $query = "insert into books(title, authors, isbn) values('$title', '$authors','$isbn')";
-
-    // $query = "insert into books(title, authors, isbn, subjectCode, condition, desc, price, sellerEmail) values('$title', '$authors', '$isbn', '$subj', '$cond', '$desc', '$price', '$userEmail')";
- 
-    mysqli_query($conn, $query);
-
-    // $queryImg = "insert into bookimg values("
-        
-    
+    $query = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values('$title', '$authors','$isbn', '$subj', '$cond', '$desc', '$price', '$userEmail')";
+  
+    mysqli_query($db, $query);
   }
   
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -53,20 +48,49 @@
       </ul>
     </header>
 
-    <section class="center-items center-self body">
-        <h2 class="bold"> "Login"</h2>
+    <section class="">
+        <h2 class="bold"> Login </h2>
         <form id="upload" name="login" class="form" action="#" method="post">
-            <input type="text" id="title" name="title" placeholder="title"></br>
-            <input type="text" id="authors" name="authors" placeholder="authors"></br>
-            <!-- can you make this a drop down menu? -->
-            <input type="text" id="subj" name="subj" placeholder="subject code"></br>
-            <input type="text" id="desc" name="description" class="left" placeholder="desc"></br>
-            <input type="number" id="isbn" name="isbn" class="right" placeholder="isbn"></br>
-            <!-- can you make this a drop down menu? -->
-            <input type="text" id="cond" name="cond" class="right" placeholder="cond"></br>
+            <label class="field" for="title"> Book Title:</label>
+            <input type="text" id="title" size="200" name="title" ></br>
+
+            <label class="field" for="authors"> Authors</label>
+            <input type="text" id="authors" name="authors"></br>
+
+            <!-- include rest -->
+            <label class="field" for="subj"> Subject</label>
+            <select id="subj" name="subj">
+              <option value="csci">CSCI </option>
+              <option value="itws">ITWS </option>
+              <option value="math">MATH </option>
+              <option value="econ">ECON </option>
+            </select>
+
+            <label class="field" for="desc"> Description</label>
+            <input type="text" id="desc" name="desc" class="left"></br>
+
+            <label class="field" for="isbn"> ISBN </label>
+            <input type="number" id="isbn" name="isbn" class="right"></br>
+
+            <label class="field" for="cond"> Condition </label>
+            <select id="cond" name="cond">
+              <option value="poor">Poor </option>
+              <option value="fair">Fair </option>
+              <option value="good">Good </option>
+              <option value="very good">Very Good </option>
+              <option value="like new">Like New </option>
+              <option value="new">New </option>
+            </select>
+
             <!-- can you make this box bigger and with dotted lines? -->
-            <input type="text" id="attach" name="attachment" placeholder="upload images" class="right"></br>
-            <input type="text" id="price" name="price" class="right" placeholder="price"></br>
+            <label class="field" for="attach"> Upload Image </label>
+            <input type="text" id="attach" name="attachment" class="right"></br>
+
+            <label class="field" for="price"> Price</label>
+            <input type="number" min="0" step="any" id="price" name="price" class="right"></br>
+
+            
+                         
             <input type="submit" value="Submit">
         </form>
     </section>

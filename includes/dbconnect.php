@@ -6,10 +6,10 @@
   $dbpassword = '';
   $dbname = 'textbook_buddy';
 
-  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+  @ $db = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
 
-  if ($conn->connect_error){
-    die("Connection failed: " . $conn->connect_error);
+  if ($db->connect_error){
+    die("Connection failed: " . $db->connect_error);
   } else {
     $dbOK = true;
   }

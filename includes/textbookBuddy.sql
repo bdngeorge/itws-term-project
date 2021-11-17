@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS BookIMG;
+DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -26,7 +26,7 @@ CREATE TABLE books(
         'admn', 'busn')
     , `condition` ENUM ('poor', 'fair', 'good', 'very good', 'like new', 'new')
     , `desc` text
-    , price double
+    , price numeric(5, 2)
     , sellerEmail VARCHAR(20)
     , FOREIGN KEY (sellerEmail) references users(email) on delete cascade
 );

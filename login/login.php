@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include ('../database/dbconnect.php');
+  include ('../includes/dbconnect.php');
   if ($dbOK) {
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     // if (isset($_POST['login']))
@@ -11,7 +11,7 @@
       // error checking 
 
       $query = "select * from users where email = '$email'";
-      $result = mysqli_query($conn, $query);
+      $result = mysqli_query($db, $query);
       
       echo mysqli_num_rows($result);
       if($result && mysqli_num_rows($result) > 0)

@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include ('../database/dbconnect.php');
+  include ('../includes/dbconnect.php');
 
    if ($_SERVER['REQUEST_METHOD'] === 'POST') 
    {
@@ -14,7 +14,7 @@
 
       $query = "insert into users(fname, lname, email, password) values('$fname', '$lname', '$email', '$pass')";
 
-      mysqli_query($conn, $query);
+      mysqli_query($db, $query);
 
       header("Location: ../login/login.php");
    }
@@ -43,7 +43,7 @@
 
 
     <section class="center-items center-self body">
-      <h2 class="bold">Sign Up</h3>
+      <h2 class="bold">Sign Up</h2>
       <form name="signup" class="form" action="#" method="post" >
         <!-- onsubmit="event.preventDefault(); validateSignUp(this);"> -->
         <input type="text" id="fname" name="fname" placeholder="First Name:" class="left"><br>
