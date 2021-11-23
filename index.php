@@ -1,7 +1,7 @@
 <?php
   session_start();
   // $_SESSION is a superglobal variable 
-  echo $_SESSION['userEmail'] ;
+  // echo isset($_SESSION['userEmail']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +22,8 @@
       <h1 class="left">Textbook Buddy</h1>
       <ul class="hmenu right">
         <a href=""><li>Home</li></a>
-        <a href=""><li>Catalog</li></a>
-        <a href=""><li>Sell</li></a>
+        <a href="catalog/catalog.php"><li>Catalog</li></a>
+        <a href="catalog/uploadBooks.php"><li>Sell</li></a>
         <!-- if no account, this will direct login page, else accounts page -->
         <a href="./login/login.php"><li>Account</li></a>
       </ul>

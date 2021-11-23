@@ -3,21 +3,34 @@
   include("../includes/dbconnect.php");
 
   $userEmail= $_SESSION['userEmail'];
-  echo $userEmail;
+  // echo $userEmail;
+
   if ($_SERVER["REQUEST_METHOD"] === 'POST')
   {
-    $title = $_POST['title'];
-    $authors = $_POST['authors'];
-    $isbn  = $_POST['isbn'];
-    $subj  = $_POST['subj'];
-    $desc  = $_POST['desc'];
-    $cond  = $_POST['cond'];
-    $price  = $_POST['price'];
-    $img   = $_POST['attachment'];
+    $title = htmlspecialchars(trim($_POST['title']));
+    $authors = htmlspecialchars(trim($_POST['authors']));
+    $isbn  = htmlspecialchars(trim($_POST['isbn']));
 
-    $query = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values('$title', '$authors','$isbn', '$subj', '$cond', '$desc', '$price', '$userEmail')";
-  
-    mysqli_query($db, $query);
+    // from dropdown menu
+    $subj  = htmlspecialchars(trim($_POST['subj']));
+
+    $desc  = htmlspecialchars(trim($_POST['desc']));
+    $cond  = htmlspecialchars(trim($_POST['cond']));
+
+    // // this is a number
+    $price  = htmlspecialchars(trim($_POST['price']));
+
+    // $img   = htmlspecialchars(trim($_POST['attachment']));
+
+    // $insQuery = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values('$title', '$authors','$isbn', '$subj', '$cond', '$desc', '$price', '$userEmail')";
+
+    $insQuery = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values(?,?,?,?,?,?,?,?)";
+    $statement = $db->prepare($insQuery);
+    $statement->bind_param("ssssssds", $title, $authors, $isbn, $subj, $cond, $desc, $price, $userEmail);
+    $statement->execute();
+    $statement->close();
+
+    echo 'Form Submitted';
   }
   
 ?>
@@ -70,7 +83,7 @@
             <input type="text" id="desc" name="desc" class="left"></br>
 
             <label class="field" for="isbn"> ISBN </label>
-            <input type="number" id="isbn" name="isbn" class="right"></br>
+            <input type="text" id="isbn" name="isbn" class="right"></br>
 
             <label class="field" for="cond"> Condition </label>
             <select id="cond" name="cond">
@@ -87,7 +100,7 @@
             <input type="text" id="attach" name="attachment" class="right"></br>
 
             <label class="field" for="price"> Price</label>
-            <input type="number" min="0" step="any" id="price" name="price" class="right"></br>
+            <input type="number" min="0" step=".01" id="price" name="price" class="right"></br>
 
             
                          

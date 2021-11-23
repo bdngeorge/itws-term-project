@@ -22,16 +22,15 @@ function validateLogin(formObj) {
       message += "- Contain at least 8 characters\n";
       message += "- Contain at least 1 number\n";
       message += "- Contain at least 1 special character\n";
+      message += "-no spaces";
       formObj.password.value = "";
     }
   }
-  if(message != "") alert(message);
-  else {
-    //Send to backend to check if email and pass are in the database
-    return true;
+  if(message != "") {
+    alert(message);
+    return false;
   }
-
-  return false;
+  return true;
 }
 
 function validateSignUp(formObj) {
@@ -63,11 +62,10 @@ function validateSignUp(formObj) {
       formObj.password.value = "";
     }
   }
-  if(message != "") alert(message);
-  else {
-    //Send to backend to check if email and pass are in the database
-    return true;
+  if(message != ""){
+    alert(message);
+    return false;
+    
   }
-
-  return false;
+  return true;
 }

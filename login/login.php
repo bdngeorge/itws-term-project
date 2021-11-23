@@ -1,28 +1,34 @@
 <?php
+   echo 'php';
   session_start();
   include ('../includes/dbconnect.php');
   if ($dbOK) {
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    // if (isset($_POST['login']))
+    echo ' dbok';
+    // if($_SERVER['REQUEST_METHOD'] == 'POST')
+    if (isset($_POST['submit']))
     {
-      $email = $_POST['login']['email'];
-      $password = $_POST['login']['password'];
+      echo 'submit';
+      $email = $_POST['email'];
+      $password = $_POST['password'];
          
       // error checking 
 
       $query = "select * from users where email = '$email'";
-      $result = mysqli_query($db, $query);
+      $result = $db->query($query);
+      $numRecords = $result->num_rows;
       
-      echo mysqli_num_rows($result);
-      if($result && mysqli_num_rows($result) > 0)
+      // echo mysqli_num_rows($result);
+      if($numRecords > 0)
       {      
-        $user_data = mysqli_fetch_assoc($result);
+        $user_data = $result->fetch_assoc();
         
+        // if password is correct, log user in
         if($user_data['password'] === $password) 
         {
           $_SESSION['userEmail'] = $user_data['email'];
           // redirect to Home page
           header("Location: ../");
+          // exit
           die;
         }
       }
@@ -61,18 +67,17 @@
     <section class="center-items center-self body">
       <h2 class="bold">Login</h2>
       <form id="login" name="login" class="form" action="#" method="post" 
+        onsubmit="validateLogin(this);"
       >
-      <!-- onsubmit="event.preventDefault(); validateLogin(this);"
-      > -->
-        <input type="email" id="email" name="login[email]" placeholder="RPI Email:" class="left"><br>
-        <input type="password" id="password" name="login[password]" placeholder="Password:" class="left"><br>
-        <input type="submit" id="lsubmit" value="Submit" class="button">
+        <input type="email" id="email" name="email" placeholder="RPI Email:" class="left"><br>
+        <input type="password" id="password" name="password" placeholder="Password:" class="left"><br>
+        <!-- if i changed value="save" font size changes? -->
+        <input type="submit" id="lsubmit" name="submit" value="submit" class="button">
       </form>
       <button type="button" onclick="window.location.href='../signup/signup.php'" class="button">Sign Up</button>
     </section>
     
     <footer>
-      
     </footer>
   </body>
 </html>
