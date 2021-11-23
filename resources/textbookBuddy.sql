@@ -15,7 +15,7 @@ insert into users values(1, "", "", "admin@rpi.edu", "admin");
 
 CREATE TABLE subjects (
     subjectCode CHAR(4) primary key
-)
+);
 
 insert into subjects values
     ('arts'), ('cogs'), ('comm'), ('econ'), 
@@ -28,7 +28,7 @@ insert into subjects values
     ('isci'), ('math'), ('matp'), ('phys'),
     ('inev'), ('usaf'), ('usar'), ('usna'), 
     ('arch'), ('lght'), ('itws'), ('mgmt'),
-    ('admn'), ('busn')
+    ('admn'), ('busn');
 
 CREATE TABLE books(
     id INT AUTO_INCREMENT primary key NOT NULL
@@ -41,7 +41,7 @@ CREATE TABLE books(
     , `desc` text
     , price numeric(5, 2)
     , sellerEmail VARCHAR(20)
-    , FOREIGN KEY (subjectCode) references subject(subjectCode) on delete set null
+    , FOREIGN KEY (subjectCode) references subjects(subjectCode) on delete set null
     , FOREIGN KEY (sellerEmail) references users(email) on delete cascade
 );
 

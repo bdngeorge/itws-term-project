@@ -1,9 +1,15 @@
 <?php
   session_start();
+
+  // redirect to login page if not
+  if(!isset($_SESSION['userEmail'])){
+    header("Location: login.php");
+    die();
+  }
+
   include("../includes/dbconnect.php");
 
   $userEmail= $_SESSION['userEmail'];
-  // echo $userEmail;
 
   if ($_SERVER["REQUEST_METHOD"] === 'POST')
   {
@@ -41,8 +47,8 @@
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>TextbookBuddy</title>
-    <link rel="stylesheet" href="../signup/signup.css">
-    <link rel="stylesheet" href="../general.css">
+    <link rel="stylesheet" href="../styles/signup.css">
+    <link rel="stylesheet" href="../styles/general.css">
     <script 
       src="https://code.jquery.com/jquery-3.6.0.min.js" 
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
@@ -53,11 +59,11 @@
     <header>
       <h1 class="left">Textbook Buddy</h1>
       <ul class="hmenu right">
-        <a href=""><li>Home</li></a>
-        <a href=""><li>Catalog</li></a>
-        <a href=""><li>Sell</li></a>
+        <a href=".."><li>Home</li></a>
+        <a href="../catalog/catalog.php"><li>Catalog</li></a>
+        <a href="../catalog/uploadBooks.php"><li>Sell</li></a>
         <!-- if no account, this will direct login page, else accounts page -->
-        <a href="../login/login.php"><li>Account</li></a>
+        <a href="../account/account.php"><li>Account</li></a>
       </ul>
     </header>
 
@@ -73,10 +79,18 @@
             <!-- include rest -->
             <label class="field" for="subj"> Subject</label>
             <select id="subj" name="subj">
-              <option value="csci">CSCI </option>
-              <option value="itws">ITWS </option>
-              <option value="math">MATH </option>
-              <option value="econ">ECON </option>
+              <?php
+                if($dbOK) {
+                  $query = "select * from subjects";
+                  $result = $db->query($query);
+                  $numRecord = $result->num_rows;
+                  for($i=0; $i < $numRecord; $i++){
+                    $record = $result->fetch_assoc();
+                    echo '<option value="'.$record['subjectCode'].'">'
+                          .strtoupper($record['subjectCode']). '</option>';
+                  }
+                }
+              ?>
             </select>
 
             <label class="field" for="desc"> Description</label>
