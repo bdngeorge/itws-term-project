@@ -1,23 +1,42 @@
 <?php
   session_start();
+
+  // redirect to login page if not
+  if(!isset($_SESSION['userEmail'])){
+    header("Location: login.php");
+    die();
+  }
+
   include("../includes/dbconnect.php");
 
   $userEmail= $_SESSION['userEmail'];
-  echo $userEmail;
+
   if ($_SERVER["REQUEST_METHOD"] === 'POST')
   {
-    $title = $_POST['title'];
-    $authors = $_POST['authors'];
-    $isbn  = $_POST['isbn'];
-    $subj  = $_POST['subj'];
-    $desc  = $_POST['desc'];
-    $cond  = $_POST['cond'];
-    $price  = $_POST['price'];
-    $img   = $_POST['attachment'];
+    $title = htmlspecialchars(trim($_POST['title']));
+    $authors = htmlspecialchars(trim($_POST['authors']));
+    $isbn  = htmlspecialchars(trim($_POST['isbn']));
 
-    $query = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values('$title', '$authors','$isbn', '$subj', '$cond', '$desc', '$price', '$userEmail')";
-  
-    mysqli_query($db, $query);
+    // from dropdown menu
+    $subj  = htmlspecialchars(trim($_POST['subj']));
+
+    $desc  = htmlspecialchars(trim($_POST['desc']));
+    $cond  = htmlspecialchars(trim($_POST['cond']));
+
+    // // this is a number
+    $price  = htmlspecialchars(trim($_POST['price']));
+
+    // $img   = htmlspecialchars(trim($_POST['attachment']));
+
+    // $insQuery = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values('$title', '$authors','$isbn', '$subj', '$cond', '$desc', '$price', '$userEmail')";
+
+    $insQuery = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values(?,?,?,?,?,?,?,?)";
+    $statement = $db->prepare($insQuery);
+    $statement->bind_param("ssssssds", $title, $authors, $isbn, $subj, $cond, $desc, $price, $userEmail);
+    $statement->execute();
+    $statement->close();
+
+    echo 'Form Submitted';
   }
   
 ?>
@@ -28,8 +47,8 @@
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>TextbookBuddy</title>
-    <link rel="stylesheet" href="../signup/signup.css">
-    <link rel="stylesheet" href="../general.css">
+    <link rel="stylesheet" href="../styles/signup.css">
+    <link rel="stylesheet" href="../styles/general.css">
     <script 
       src="https://code.jquery.com/jquery-3.6.0.min.js" 
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
@@ -40,11 +59,11 @@
     <header>
       <h1 class="left">Textbook Buddy</h1>
       <ul class="hmenu right">
-        <a href=""><li>Home</li></a>
-        <a href=""><li>Catalog</li></a>
-        <a href=""><li>Sell</li></a>
+        <a href=".."><li>Home</li></a>
+        <a href="../catalog/catalog.php"><li>Catalog</li></a>
+        <a href="../catalog/uploadBooks.php"><li>Sell</li></a>
         <!-- if no account, this will direct login page, else accounts page -->
-        <a href="../login/login.php"><li>Account</li></a>
+        <a href="../account/account.php"><li>Account</li></a>
       </ul>
     </header>
 
@@ -60,17 +79,25 @@
             <!-- include rest -->
             <label class="field" for="subj"> Subject</label>
             <select id="subj" name="subj">
-              <option value="csci">CSCI </option>
-              <option value="itws">ITWS </option>
-              <option value="math">MATH </option>
-              <option value="econ">ECON </option>
+              <?php
+                if($dbOK) {
+                  $query = "select * from subjects";
+                  $result = $db->query($query);
+                  $numRecord = $result->num_rows;
+                  for($i=0; $i < $numRecord; $i++){
+                    $record = $result->fetch_assoc();
+                    echo '<option value="'.$record['subjectCode'].'">'
+                          .strtoupper($record['subjectCode']). '</option>';
+                  }
+                }
+              ?>
             </select>
 
             <label class="field" for="desc"> Description</label>
             <input type="text" id="desc" name="desc" class="left"></br>
 
             <label class="field" for="isbn"> ISBN </label>
-            <input type="number" id="isbn" name="isbn" class="right"></br>
+            <input type="text" id="isbn" name="isbn" class="right"></br>
 
             <label class="field" for="cond"> Condition </label>
             <select id="cond" name="cond">
@@ -87,7 +114,7 @@
             <input type="text" id="attach" name="attachment" class="right"></br>
 
             <label class="field" for="price"> Price</label>
-            <input type="number" min="0" step="any" id="price" name="price" class="right"></br>
+            <input type="number" min="0" step=".01" id="price" name="price" class="right"></br>
 
             
                          
