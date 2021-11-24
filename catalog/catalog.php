@@ -1,7 +1,7 @@
 <?php
-  session_start();
-  
+  session_start();  
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,17 +20,19 @@
     <header>
       <h1 class="left">Textbook Buddy</h1>
       <ul class="hmenu right">
-        <a href=".."><li>Home</li></a>
+        <a href="../index.php"><li>Home</li></a>
         <a href="catalog.php"><li>Catalog</li></a>
-        <a href="uploadBooks.php"><li>Sell</li></a>
-        <!-- if no account, this will direct login page, else accounts page -->
+        <a href="uploadBooks.php"><li>Sell</li></a> 
         <a href="../account/account.php"><li>Account</li></a>
       </ul>
     </header>
 
+    <!-- Show books-->
+    <?php include("filters.php"); ?>
+
+
 
     <footer>
-      
     </footer>
   </body>
 </html>
