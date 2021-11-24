@@ -4,17 +4,16 @@
 }
 
 header {
-	font-variant: small-caps;
-  height: 3.5vw;
-  display: flex;
+  font-variant: small-caps;
+  height: 75px;
   font-weight: bold;
   background-color: rgb(241, 239, 239);
-  color: black;
-  align-items: center;
-  justify-content: space-evenly;
+  position: relative;
 }
+
 header h1 {
-  font-size: 2.5vw;
+  font-size: 40px;
+  position: absolute;
 }
 
 .bold {
@@ -34,7 +33,7 @@ header h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+} 
 .center-self {
   margin: 0;
   position: absolute;
@@ -49,23 +48,30 @@ header h1 {
   justify-content: center;
 }
 
+/*  header menu items */
+.logo {
+  float:left;
+  padding: 25px 0 5px 20px;
+}
+
 .hmenu {
-	width: 50%;
-  height: 50%;
-	text-align: center;
-  display: flex;
+  text-align: center;
+  float: right;
+  position: absolute;
+  top: 6px;
+  right: 10px;
 }
 .hmenu a {
   color: black;
-	text-decoration: none;
-  padding: 0 2.5vw 0 2.5vw;
+  text-decoration: none;
+  padding: 0 3px 0 3px;
 }
+
 .hmenu li {
-  font-size: 1vw;
+  font-size: 1.5em;
   background-color: rgb(179, 177, 177);
-  border-radius: 25%;
+  border-radius: 10px;
+  padding: 0 5px 0 5px;
   display: inline-block;
-  width: 8vw;
-  height: 1.5vw;
-	list-style: none;
+  list-style: none;
 }

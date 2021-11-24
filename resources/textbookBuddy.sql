@@ -31,7 +31,7 @@ insert into subjects values
     ('admn'), ('busn');
 
 CREATE TABLE conditions (
-    `condition` CHAR(4) primary key
+    `condition` CHAR(9) primary key
 );
 
 insert into conditions values 
