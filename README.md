@@ -22,6 +22,7 @@
     1. upload images
 1. Catalog
     1. make filters look nice
+        1. make it so checkboxes aren't deleted when submit is clicked
     1. show books
         1. I can make this easily display right book if you can make a nice looking box+grid
 1. Seller Profile

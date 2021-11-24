@@ -18,9 +18,8 @@
   </head>
   <body>
     <header>
-      <h1 class="left">Textbook Buddy</h1>
+      <a href=""> <h1 class="logo left">  Textbook Buddy </h1> </a>
       <ul class="hmenu right">
-        <a href=""><li>Home</li></a>
         <a href="catalog/catalog.php"><li>Catalog</li></a>
         <a href="catalog/uploadBooks.php"><li>Sell</li></a>
         <!-- if no account, this will direct login page, else accounts page -->
