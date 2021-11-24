@@ -44,7 +44,7 @@
       <ul class="hmenu right">
         <a href=".."><li>Home</li></a>
         <a href="../catalog/catalog.php"><li>Catalog</li></a>
-        <a href=""><li>Sell</li></a>
+        <a href="../catalog/uploadBooks.php"><li>Sell</li></a>
         <a href="account.php"><li>Account</li></a>
       </ul>
     </header>
