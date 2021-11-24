@@ -49,7 +49,7 @@ CREATE TABLE books(
     , `condition` CHAR(4)
     , `desc` text
     , price numeric(5, 2)
-    , sellerEmail VARCHAR(20)
+    , sellerEmail VARCHAR(20) not null
     , FOREIGN KEY (`condition`) references `conditions`(`condition`) on delete set null
     , FOREIGN KEY (subjectCode) references subjects(subjectCode) on delete set null
     , FOREIGN KEY (sellerEmail) references users(email) on delete cascade
