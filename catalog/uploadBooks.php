@@ -3,7 +3,7 @@
 
   // redirect to login page if not
   if(!isset($_SESSION['userEmail'])){
-    header("Location: login.php");
+    header("Location: ../account/login.php");
     die();
   }
 
@@ -27,8 +27,6 @@
     $price  = htmlspecialchars(trim($_POST['price']));
 
     // $img   = htmlspecialchars(trim($_POST['attachment']));
-
-    // $insQuery = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values('$title', '$authors','$isbn', '$subj', '$cond', '$desc', '$price', '$userEmail')";
 
     $insQuery = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values(?,?,?,?,?,?,?,?)";
     $statement = $db->prepare($insQuery);
@@ -68,64 +66,59 @@
     </header>
 
     <section class="">
-        <h2 class="bold"> Login </h2>
-        <form id="upload" name="login" class="form" action="#" method="post">
-            <label class="field" for="title"> Book Title:</label>
-            <input type="text" id="title" size="200" name="title" ></br>
+      <h2 class="bold"> Sell Book </h2>
+      <form id="upload" name="login" class="form" action="#" method="post">
+        <label class="field" for="title"> Book Title:</label>
+        <input type="text" id="title" size="200" name="title" ></br>
 
-            <label class="field" for="authors"> Authors</label>
-            <input type="text" id="authors" name="authors"></br>
+        <label class="field" for="authors"> Authors</label>
+        <input type="text" id="authors" name="authors"></br>
 
-            <!-- include rest -->
-            <label class="field" for="subj"> Subject</label>
-            <select id="subj" name="subj">
-              <?php
-                if($dbOK) {
-                  $query = "select * from subjects";
-                  $result = $db->query($query);
-                  $numRecord = $result->num_rows;
-                  for($i=0; $i < $numRecord; $i++){
-                    $record = $result->fetch_assoc();
-                    echo '<option value="'.$record['subjectCode'].'">'
-                          .strtoupper($record['subjectCode']). '</option>';
-                  }
-                }
-              ?>
-            </select>
+        <!-- include rest -->
+        <label class="field" for="subj"> Subject</label>
+        <select id="subj" name="subj">
+          <?php
+            if($dbOK) {
+              $query = "select * from subjects";
+              $result = $db->query($query);
+              $numRecord = $result->num_rows;
+              for($i=0; $i < $numRecord; $i++){
+                $record = $result->fetch_assoc();
+                echo '<option value="'.$record['subjectCode'].'">'
+                      .strtoupper($record['subjectCode']). '</option>';
+              }
+            }
+          ?>
+        </select>
 
-            <label class="field" for="desc"> Description</label>
-            <input type="text" id="desc" name="desc" class="left"></br>
+        <label class="field" for="desc"> Description</label>
+        <input type="text" id="desc" name="desc" class="left"></br>
 
-            <label class="field" for="isbn"> ISBN </label>
-            <input type="text" id="isbn" name="isbn" class="right"></br>
+        <label class="field" for="isbn"> ISBN </label>
+        <input type="text" id="isbn" name="isbn" class="right"></br>
 
-            <label class="field" for="cond"> Condition </label>
-            <select id="cond" name="cond">
-              <option value="poor">Poor </option>
-              <option value="fair">Fair </option>
-              <option value="good">Good </option>
-              <option value="very good">Very Good </option>
-              <option value="like new">Like New </option>
-              <option value="new">New </option>
-            </select>
+        <label class="field" for="cond"> Condition </label>
+        <select id="cond" name="cond">
+          <option value="poor">Poor </option>
+          <option value="fair">Fair </option>
+          <option value="good">Good </option>
+          <option value="very good">Very Good </option>
+          <option value="like new">Like New </option>
+          <option value="new">New </option>
+        </select>
 
-            <!-- can you make this box bigger and with dotted lines? -->
-            <label class="field" for="attach"> Upload Image </label>
-            <input type="text" id="attach" name="attachment" class="right"></br>
+        <!-- can you make this box bigger and with dotted lines? -->
+        <label class="field" for="attach"> Upload Image </label>
+        <input type="text" id="attach" name="attachment" class="right"></br>
 
-            <label class="field" for="price"> Price</label>
-            <input type="number" min="0" step=".01" id="price" name="price" class="right"></br>
-
-            
-                         
-            <input type="submit" value="Submit">
-        </form>
+        <label class="field" for="price"> Price</label>
+        <input type="number" min="0" step=".01" id="price" name="price" class="right"></br>
+        
+        <input type="submit" value="Submit">
+      </form>
     </section>
             
-
-
-    <footer>
-      
+    <footer>      
     </footer>
   </body>
 </html>
