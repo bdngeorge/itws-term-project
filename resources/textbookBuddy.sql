@@ -1,4 +1,5 @@
 -- DROP TABLE IF EXISTS BookIMG;
+DROP TABLE IF EXISTS reservebooks;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS subjects, conditions;
@@ -11,7 +12,7 @@ CREATE TABLE users (
     , password VARCHAR(100) NOT NULL
 );
 
-insert into users values(1, "", "", "admin@rpi.edu", "admin");
+-- insert into users values(1, "", "", "admin@rpi.edu", "admin");
 
 CREATE TABLE subjects (
     subjectCode CHAR(4) primary key
@@ -41,7 +42,7 @@ insert into conditions values
 
 CREATE TABLE books(
     id INT AUTO_INCREMENT primary key NOT NULL
-    , bookID INT UNIQUE    -- references image
+    , imgID VARCHAR(15) UNIQUE    -- references image
     , title VARCHAR(200)
     , authors VARCHAR(1000)
     , isbn VARCHAR(20)
@@ -54,6 +55,16 @@ CREATE TABLE books(
     , FOREIGN KEY (subjectCode) references subjects(subjectCode) on delete set null
     , FOREIGN KEY (sellerEmail) references users(email) on delete cascade
 );
+
+-- user reserve books 
+-- functionality not yet created
+CREATE TABLE reservebooks(
+    buyerEmail VARCHAR(20) not null
+    , bookID INT not null
+    , FOREIGN KEY (buyerEmail) references users(email) on delete cascade
+    , FOREIGN KEY (bookID) references books(id) on delete cascade
+
+)
 
 -- will need this if we want to allow multiple images
 -- CREATE TABLE BookIMG (

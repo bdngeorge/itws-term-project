@@ -30,6 +30,14 @@
     <!-- Show books-->
     <?php include("filters.php"); ?>
 
+    <table>
+      <?php
+
+
+      ?>
+
+    </table>
+
 
 
     <footer>
