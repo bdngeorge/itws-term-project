@@ -11,30 +11,54 @@
 
   $userEmail= $_SESSION['userEmail'];
 
-  if ($_SERVER["REQUEST_METHOD"] === 'POST')
+  // if ($_SERVER["REQUEST_METHOD"] === 'POST')
+  if (isset($_POST['submit']))
   {
+
+    // make title, authors, subject, cond, price required
     $title = htmlspecialchars(trim($_POST['title']));
     $authors = htmlspecialchars(trim($_POST['authors']));
     $isbn  = htmlspecialchars(trim($_POST['isbn']));
-
     // from dropdown menu
     $subj  = htmlspecialchars(trim($_POST['subj']));
-
-    $desc  = htmlspecialchars(trim($_POST['desc']));
     $cond  = htmlspecialchars(trim($_POST['cond']));
-
-    // // this is a number
+    $desc  = htmlspecialchars(trim($_POST['desc']));
+    // this is a number
     $price  = htmlspecialchars(trim($_POST['price']));
 
-    // $img   = htmlspecialchars(trim($_POST['attachment']));
+    // file infomation
+    // new file name
 
-    $insQuery = "insert into books(title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values(?,?,?,?,?,?,?,?)";
+    $fileName = $_FILES['file']['name'];
+    $tmploc = $_FILES['file']['tmp_name'];
+    $filesize = $_FILES['file']['size'];
+    $fileError = $_FILES['file']['error'];
+    $fileSplit = explode('.', $fileName);
+    $fileExt = strtolower(end($fileSplit));
+
+    $imgExt = array('jpeg', 'jpg', 'png');
+
+    if (!in_array($fileExt, $imgExt) or !$fileError === 0 or $filesize >= 10000000){
+      echo "Error with file, please upload a different file";
+      die();
+    } 
+
+    $uploads_dir = "../resources/bookImg";
+    $imgIdentifier=  $subj .'-'. rand(999999999, 9999999999).'.'.$fileExt;
+    echo $imgIdentifier;
+    move_uploaded_file($tmploc, $uploads_dir.'/'.$imgIdentifier);
+
+    $insQuery = "insert into books(imgID, title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values(?,?,?,?,?,?,?,?,?)";
     $statement = $db->prepare($insQuery);
-    $statement->bind_param("ssssssds", $title, $authors, $isbn, $subj, $cond, $desc, $price, $userEmail);
-    $statement->execute();
+    $statement->bind_param("sssssssds", $imgIdentifier, $title, $authors, $isbn, $subj, $cond, $desc, $price, $userEmail);
+    $success = $statement->execute();
     $statement->close();
 
-    echo 'Form Submitted';
+    if ($success) {
+      echo "success";
+    } else {
+      echo "Error on server, please try again";
+    }
   }
   
 ?>
@@ -66,14 +90,15 @@
 
     <section class="">
       <h2 class="bold"> Sell Book </h2>
-      <form id="upload" name="login" class="form" action="#" method="post">
+
+      <form id="upload" name="login" class="form" 
+      method="post" action="uploadBooks.php"  enctype="multipart/form-data">
         <label class="field" for="title"> Book Title:</label>
         <input type="text" id="title" size="200" name="title" ></br>
 
         <label class="field" for="authors"> Authors</label>
         <input type="text" id="authors" name="authors"></br>
 
-        <!-- include rest -->
         <label class="field" for="subj"> Subject</label>
         <select id="subj" name="subj">
           <?php
@@ -106,14 +131,13 @@
           <option value="new">New </option>
         </select>
 
-        <!-- can you make this box bigger and with dotted lines? -->
-        <label class="field" for="attach"> Upload Image </label>
-        <input type="text" id="attach" name="attachment" class="right"></br>
+        <label class="field" for="file"> Upload Image </label>
+        <input type="file" id="file" name="file"></br>
 
         <label class="field" for="price"> Price</label>
         <input type="number" min="0" step=".01" id="price" name="price" class="right"></br>
         
-        <input type="submit" value="Submit">
+        <input type="submit" name="submit" value="submit">
       </form>
     </section>
             
