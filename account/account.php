@@ -19,6 +19,14 @@
 
   <a href="logout.php">Logout</a>
 
+  <?php
+    // show all books user sold
+
+    // option to delete books
+
+    // show all books users requested
+  ?>
+
 
   
 </html>

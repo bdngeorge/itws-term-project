@@ -1,23 +1,33 @@
 <?php 
   include ('../includes/dbconnect.php'); 
+  $subjs = array();
+  $conds = array();
+  // $priceCeilSet = 0;
+  // $priceCeil = 0;
+?>
 
+<?php 
   
   if (isset($_POST['cond'])) {
-    echo '<ul>';
-
+    echo "cond set";
 		foreach ($_POST['cond'] as $cond) :
-			echo "<li> $cond</li>";
+      array_push($conds, $cond);
     endforeach;
-	  echo '</ul>';
+  }
 
-  }
   if (isset($_POST['subj'])) {
-    echo '<ul>';
+    echo "subject set";
 		foreach ($_POST['subj'] as $subj) :
-			echo "<li> $subj</li>";
+			array_push($subjs, $subj);
     endforeach;
-	  echo '</ul>';
   }
+
+  // if (isset($_POST['price'])) {
+  //   echo "price set";
+  //   $priceCeilSet = 1;
+  //   $priceCeil = $_POST['price'];
+  // } 
+
 ?>
 <div id="sidebar">
 
@@ -57,6 +67,7 @@
         for ($i=0; $i<$numRecords; $i++){
           $record = $result->fetch_assoc();
           $subj = strtoupper($record['subjectCode']);
+          // checked
           echo "<div>
                   <input type='checkbox' name='subj[]' value='$subj' id='$subj'>
                   <label for='$subj'>$subj</label>
