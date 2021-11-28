@@ -27,7 +27,7 @@
             all book img will be located under resources/bookIMG in format `subject-10randomDigits.ext`. Using the form will do that for you
         4. Then in phpmyadmin, go to 
             ``` 
-            textbookbuddy 
+            textbook_buddy 
             -> books 
             -> export, 
             and copy and paste things under INSERT INTO `books` into `items.sql`
