@@ -10,7 +10,7 @@
     <title>TextbookBuddy</title>
     <!-- <link rel="stylesheet" href="../styles/login.css"> -->
     <link rel="stylesheet" href="../styles/general.css">
-    <link rel="stylesheet" href="../styles/filters.css">
+    <link rel="stylesheet" href="../styles/catalog.css">
     <script 
       src="https://code.jquery.com/jquery-3.6.0.min.js" 
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
@@ -32,25 +32,14 @@
 
     <div >
       <?php
-        include("../includes/dbconnect.php");
-        // $subjects = "('csci', 'math')";
-        $subjects = "('" . implode("','", $subjs) . "')";
-        $conditions = "('" . implode("','", $conds) . "')";
-        
-  
+        // include("../includes/dbconnect.php");
         if ($dbOK){
-          // show all books for now
+          // show all books for if none selected
           $query = "SELECT * from books";
 
-          if (isset($_POST['price'])) {
-            $priceCeil = $_POST['price'];
-            // $query = "SELECT * FROM books WHERE price < $priceCeil and subjectCode IN $subjects and condition IN $conditions";
-            $query = "SELECT * FROM books WHERE price <= $priceCeil and subjectCode IN $subjects";
-
-            echo "yes price ceil";
-          } else {
-            $query = "SELECT * FROM books WHERE subjectCode IN $subjects";
-            echo "no price ceil";
+          if (!empty($where)) {
+            $sqlcond = implode(" and ", $where);
+            $query .= " where $sqlcond";
           }
 
           $result = $db->query($query);
@@ -63,21 +52,26 @@
             $id = $record['id'];
             $file = $record['imgID'];
 
+            echo "<div>";
+
             echo "<strong>$title</strong>";
 
             echo "<a href='bookInfo.php?id=$id'><img style='width:250px;' src='../resources/bookImg/$file'></a>";
 
             echo $record['desc'];
+
+            echo "<br>";
+
+            echo $record['condition'];
             
             echo "<br><br><br>";
+            echo "</div>";
+
           }
         }
+
       ?>
-
       </div>
-
-
-
     <footer>
     </footer>
   </body>
