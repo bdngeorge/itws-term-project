@@ -30,27 +30,29 @@
     <!-- Show books-->
     <?php include("filters.php"); ?>
 
-    <table>
+    <div >
       <?php
         include("../includes/dbconnect.php");
-        $subjects = "('csci', 'math')";
-        // $subjects = array('csci', 'math');
-
-        // $comma_separated = implode("','", $subjects);
-        // $str = "('$comma_separated')";
-
-        // echo $str;
-        // echo "<br>";
-        // var_dump($str);
-        // echo "<br>";
-        // var_dump("('csci', 'math')");
-        // echo "<br>";
-
-
+        // $subjects = "('csci', 'math')";
+        $subjects = "('" . implode("','", $subjs) . "')";
+        $conditions = "('" . implode("','", $conds) . "')";
+        
+  
         if ($dbOK){
           // show all books for now
           $query = "SELECT * from books";
-          // $query = "SELECT * from books where subjectCode in $subjects and  `condition` = 'good'";
+
+          if (isset($_POST['price'])) {
+            $priceCeil = $_POST['price'];
+            // $query = "SELECT * FROM books WHERE price < $priceCeil and subjectCode IN $subjects and condition IN $conditions";
+            $query = "SELECT * FROM books WHERE price <= $priceCeil and subjectCode IN $subjects";
+
+            echo "yes price ceil";
+          } else {
+            $query = "SELECT * FROM books WHERE subjectCode IN $subjects";
+            echo "no price ceil";
+          }
+
           $result = $db->query($query);
           $numRecords = $result->num_rows;
 
@@ -72,7 +74,7 @@
         }
       ?>
 
-    </table>
+      </div>
 
 
 
