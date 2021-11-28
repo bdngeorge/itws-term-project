@@ -22,14 +22,20 @@
 1. you can filter books (not by search bar yet)
 1. you can click on book for more info
 
+
 ## ToDo
 1. Upload Books form
     1. make it look nice
     1. Add fake data, 
-        1. all book img will be located under resources/bookIMG in format `subject-10randomDigits.ext`. Using the form will do that for you
-        1. Then in phpmyadmin, go to 
+        1. Login `account/account.php`
+        2. Upload  `catalog/uploadBooks.php`
+            all book img will be located under resources/bookIMG in format `subject-10randomDigits.ext`. Using the form will do that for you
+        4. Then in phpmyadmin, go to 
             ``` 
-            textbookbuddy -> books -> export, and copy and paste things under INSERT INTO `books` into `items.sql`
+            textbook_buddy 
+            -> books 
+            -> export, 
+            and copy and paste things under INSERT INTO `books` into `items.sql`
             ````
 1. Catalog
     1. make filters look nice
