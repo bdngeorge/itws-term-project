@@ -6,7 +6,6 @@
     exit();
   }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -16,18 +15,16 @@
     <title>TextbookBuddy - Account </title>
   </head>
   <h1> Welcome <?php echo $_SESSION['userEmail']; ?></h1>
+  
 
-  <a href="logout.php">Logout</a>
+    <!-- show all books user sold -->
+    <a href="sellerCatalog.php"> My books </a> <br>
+    <!-- option to delete books -->
 
-  <?php
-    // show all books user sold
+    <!-- show all books users requested -->
 
-    // option to delete books
-
-    // show all books users requested
-  ?>
-
-
+    <!-- logout -->
+    <a href="logout.php">Logout</a>
   
 </html>
 
