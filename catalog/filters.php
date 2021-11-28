@@ -1,7 +1,10 @@
 <?php 
   include ('../includes/dbconnect.php'); 
+
+  
   if (isset($_POST['cond'])) {
     echo '<ul>';
+
 		foreach ($_POST['cond'] as $cond) :
 			echo "<li> $cond</li>";
     endforeach;
