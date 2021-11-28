@@ -1,32 +1,36 @@
 <?php 
   include ('../includes/dbconnect.php'); 
-  $subjs = array();
-  $conds = array();
-  // $priceCeilSet = 0;
-  // $priceCeil = 0;
+  $where = array();
 ?>
 
 <?php 
   
   if (isset($_POST['cond'])) {
-    echo "cond set";
+    $conds = array();
 		foreach ($_POST['cond'] as $cond) :
       array_push($conds, $cond);
     endforeach;
+    $conditions = "('" . implode("','", $conds) . "')";
+    $sqlcond = "`condition` IN $conditions";
+    array_push($where, $sqlcond);
+
   }
 
   if (isset($_POST['subj'])) {
-    echo "subject set";
+    $subjs = array();
 		foreach ($_POST['subj'] as $subj) :
 			array_push($subjs, $subj);
     endforeach;
+    $subjects = "('" . implode("','", $subjs) . "')";
+    $sqlcond = "`subjectCode` IN $subjects";
+    array_push($where, $sqlcond);
   }
 
-  // if (isset($_POST['price'])) {
-  //   echo "price set";
-  //   $priceCeilSet = 1;
-  //   $priceCeil = $_POST['price'];
-  // } 
+  if (isset($_POST['priceCeil']) and !empty($_POST['priceCeil'])) {   
+    $priceCeil = $_POST['priceCeil'];
+    $sqlcond = "price <= $priceCeil";
+    array_push($where, $sqlcond);
+  } 
 
 ?>
 <div id="sidebar">
@@ -39,12 +43,12 @@
   </form>
   <form action="catalog.php" method="post">
     <label class="field" for="price"> Under $ </label>
-    <input type=number min="0" step="0.1" id="price" name="price"><br>
+    <input type=number min="0" step="0.1" id="price" name="priceCeil"><br>
 
     <label class="field" for="cond"> Condition </label>
     <?php
       if($dbOK){
-        $query = "select * from conditions";
+        $query = "select * from conditions order by id";
         $result= $db->query($query);
         $numRecords = $result->num_rows;
         for($i=0; $i<$numRecords; $i++){
@@ -54,7 +58,6 @@
                   <input type='checkbox' name='cond[]' value='$cond' id='$cond'>
                   <label for='$cond'>$cond</label>
                 </div>";
-        
         }
       }
     ?>
@@ -66,11 +69,10 @@
         $numRecords = $result->num_rows;
         for ($i=0; $i<$numRecords; $i++){
           $record = $result->fetch_assoc();
-          $subj = strtoupper($record['subjectCode']);
-          // checked
+          $subj = $record['subjectCode'];
           echo "<div>
                   <input type='checkbox' name='subj[]' value='$subj' id='$subj'>
-                  <label for='$subj'>$subj</label>
+                  <label for='$subj'>". strtoupper($subj)."</label>
                 </div>";
         }
       }
@@ -79,17 +81,3 @@
   </form>
 </div>
 
-<!--
-
-select bookID, 
-from books 
-where subjcode in (...)
-
-
-
-select bookID, 
-from books join bookImg on books.bookID = bookIMG.bookID
-where subjcode in (...)
-
-
--->

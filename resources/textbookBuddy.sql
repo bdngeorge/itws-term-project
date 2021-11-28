@@ -32,10 +32,11 @@ insert into subjects values
     ('admn'), ('busn');
 
 CREATE TABLE conditions (
-    `condition` CHAR(9) primary key
+    id INT AUTO_INCREMENT primary key NOT NULL
+    ,`condition` CHAR(9) unique
 );
 
-insert into conditions values 
+insert into conditions(`condition`) values 
     ('poor'), ('fair'), ('good'), 
     ('very good'), ('like new'), 
     ('new');
