@@ -22,3 +22,23 @@
         <a href="../account/account.php"><li>Account</li></a>
       </ul>
     </header>
+
+
+<?php
+  include("../includes/dbconnect.php");
+
+  if($dbOK) {
+    $id = $_GET['id'];
+    // $id = mysqli_real_escape_string($db, $id);
+    $query = "SELECT * FROM books WHERE id = $id limit 1";
+    $result = $db->query($query);
+    $record = $result->fetch_assoc();
+    $file = $record['imgID'];
+    var_dump($record);
+
+    echo "<br>";
+
+    echo "<img style='width:250px;' src='../resources/bookImg/$file'>";
+
+  }
+?>
