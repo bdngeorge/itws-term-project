@@ -42,7 +42,7 @@ insert into conditions values
 
 CREATE TABLE books(
     id INT AUTO_INCREMENT primary key NOT NULL
-    , imgID VARCHAR(15) UNIQUE    -- references image
+    , imgID VARCHAR(20) UNIQUE    -- references image
     , title VARCHAR(200)
     , authors VARCHAR(1000)
     , isbn VARCHAR(20)

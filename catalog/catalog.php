@@ -32,8 +32,44 @@
 
     <table>
       <?php
+        include("../includes/dbconnect.php");
+        $subjects = "('csci', 'math')";
+        // $subjects = array('csci', 'math');
+
+        // $comma_separated = implode("','", $subjects);
+        // $str = "('$comma_separated')";
+
+        // echo $str;
+        // echo "<br>";
+        // var_dump($str);
+        // echo "<br>";
+        // var_dump("('csci', 'math')");
+        // echo "<br>";
 
 
+        if ($dbOK){
+          // show all books for now
+          $query = "SELECT * from books";
+          // $query = "SELECT * from books where subjectCode in $subjects and  `condition` = 'good'";
+          $result = $db->query($query);
+          $numRecords = $result->num_rows;
+
+          // if numRecords = 0, show message 
+          for ($i=0; $i < $numRecords; $i++) {
+            $record = $result->fetch_assoc();
+            $title = $record['title'];
+            $id = $record['id'];
+            $file = $record['imgID'];
+
+            echo "<strong>$title</strong>";
+
+            echo "<a href='bookInfo.php?id=$id'><img style='width:250px;' src='../resources/bookImg/$file'></a>";
+
+            echo $record['desc'];
+            
+            echo "<br><br><br>";
+          }
+        }
       ?>
 
     </table>
