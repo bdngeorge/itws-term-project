@@ -37,15 +37,15 @@
 
 
   <form action="catalog.php" method="post">
-    <!-- <label class="field" for="search"> Search </label> -->
-    <input type=text id="search" name="search" placeholder="search"><br>
-    <input type="submit" name="search" value="search">
+    <label class="field1" for="search"><strong>Search</strong></label>
+    <input type=text id="search" name="search" placeholder="Enter search here..."><br>
+    <input type="submit" name="search" value="Go">
   </form>
   <form action="catalog.php" method="post">
-    <label class="field" for="price"> Under $ </label>
-    <input type=number min="0" step="0.1" id="price" name="priceCeil"><br>
+    <label class="field" for="price"><strong>Max Price</strong></label>
+    <input type=number min="0" step="1" id="price" name="priceCeil"><br>
 
-    <label class="field" for="cond"> Condition </label>
+    <label class="field" for="cond"><strong>Condition</strong></label>
     <?php
       if($dbOK){
         $query = "select * from conditions order by id";
@@ -56,12 +56,12 @@
           $cond = $record['condition'];
           echo "<div>
                   <input type='checkbox' name='cond[]' value='$cond' id='$cond'>
-                  <label for='$cond'>$cond</label>
+                  <label for='$cond'>". ucfirst($cond)."</label>
                 </div>";
         }
       }
     ?>
-    <label class="field" for="subj">subjectCode</label>
+    <label class="field" for="subj"><strong>Subject Code</strong></label>
     <?php 
       if($dbOK){
         $query = "select * from subjects";
@@ -77,7 +77,7 @@
         }
       }
     ?>
-    <input type="submit" name="filter" value="filter">
+    <input type="submit" name="filter" value="Go">
   </form>
 </div>
 
