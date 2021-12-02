@@ -24,10 +24,10 @@
   flex-direction: column;
   align-items: center;
   width: 250px;
-  margin-left: 20px;
+  margin: 0 0 10px 20px;
 }
 
-.book strong {
+.book h5 {
   font-size: .9em;
 }
 

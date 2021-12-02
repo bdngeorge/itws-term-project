@@ -52,15 +52,10 @@
 
                 echo "<a href='bookInfo.php?id=$id'><img style='width:250px;height:300px;' src='../resources/bookImg/$file'></a>";
 
-                echo "<strong>$title</strong>";
+                echo "<h5>$title</h5>";
 
-                echo $record['desc'];
+                echo "<p>".ucfirst($record['condition'])."</p>";
 
-                echo "<br>";
-
-                echo $record['condition'];
-                
-                echo "<br><br><br>";
                 echo "</div>";
 
               }
