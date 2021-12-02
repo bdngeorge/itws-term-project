@@ -41,6 +41,7 @@
 
 #sidebar input[type="text"], input[type="number"] {
   width: 95%;
+  height: 2em;
   resize: vertical;
   border: 1px solid rgba(209, 209, 209, 0.555); 
 }
