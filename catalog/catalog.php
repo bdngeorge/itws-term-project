@@ -54,7 +54,9 @@
 
                 echo "<h5>$title</h5>";
 
-                echo "<p>".ucfirst($record['condition'])."</p>";
+                echo "<p>".ucfirst($record['condition'])." - ";
+
+                echo "$".$record['price']."</p>";
 
                 echo "</div>";
 
