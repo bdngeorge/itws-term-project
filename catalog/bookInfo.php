@@ -6,7 +6,8 @@
     <title>TextbookBuddy</title>
     <!-- <link rel="stylesheet" href="../styles/login.css"> -->
     <link rel="stylesheet" href="../styles/general.css">
-    <link rel="stylesheet" href="../styles/filters.css">
+    <link rel="stylesheet" href="../styles/bookinfo.css">
+
     <script 
       src="https://code.jquery.com/jquery-3.6.0.min.js" 
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
@@ -33,12 +34,39 @@
     $query = "SELECT * FROM books WHERE id = $id limit 1";
     $result = $db->query($query);
     $record = $result->fetch_assoc();
+
+    $title = $record['title'];
+    $authors = $record['authors'];
+    $isbn = $record['isbn'];
+    $subj = $record['subjectCode'];
+    $condition = $record['condition'];
+    $desc = $record['desc'];
     $file = $record['imgID'];
-    var_dump($record);
+    $price = $record['price'];
+var_dump($record);    echo "<div id='item'>";
+    echo "<img src='../resources/bookImg/$file'>";
+  
 
-    echo "<br>";
+    echo "<div id='bookInfo'>";
+    
+    echo '<h1>'.$title.'</h1>';
+    echo '<br>';
+    echo '<strong>Authors:</strong>'.$authors;
+    echo '<br>';
+    echo '<strong>ISBN:</strong>'.$isbn;
+    echo '<br>';
+    echo $subj;
+    echo '<br>';
+    echo $condition;
+    echo '<br>';
+    echo $desc;
+    echo '<br>';
+    echo $price;
+    echo '</div>';
+    echo "</div>";
 
-    echo "<img style='width:250px;' src='../resources/bookImg/$file'>";
+    
+    
 
   }
 ?>

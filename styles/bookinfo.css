@@ -1,0 +1,27 @@
+#item{
+position:relative;
+
+
+
+
+}
+
+img {
+    width:250px;
+    position:absolute;
+   top:10px;
+   left:10px;
+
+
+}
+
+#bookInfo{
+    position:absolute;
+    background-color: green;
+    top:10px;
+   left:310px;
+    
+
+
+  
+}
