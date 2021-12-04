@@ -7,11 +7,6 @@
     exit();
   }
   
- 
-
-
-
-   
 ?>
 
 <!DOCTYPE html>
@@ -65,9 +60,7 @@ echo '</div>';
 </div>
 </div>
 
-<div id = "goto"> 
-<h2>If you would like to view our catalog, go ahead!</h2>
-<a href="catalog/catalog.php"><li>Catalog</li></a>
+
 
 <!--<a href="catalog/uploadBooks.php"><li>Sell</li></a>-->
        
