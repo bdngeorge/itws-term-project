@@ -1,0 +1,48 @@
+#outer {
+    position:absolute;
+left:250px;
+background-color: whitesmoke;
+width: 800px;
+border: 10px solid blueviolet; 
+padding: 20px; 
+height: 100px;
+
+
+}
+#middle{
+
+font-size: 2em;
+font-variant: small-caps;
+font-weight: bold;
+bottom: 200px;
+left: 650px;
+
+
+
+}
+#sellerlog{
+    font-size: 2em;
+   margin-left: 600px;
+   margin-top: -75px;
+   
+
+
+
+}
+#welcome{
+  
+    text-align: center;
+    
+
+
+}
+#goto{
+text-align:center;
+bottom:200px;
+
+
+
+}
+
+
+
