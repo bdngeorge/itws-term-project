@@ -47,13 +47,14 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
       crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="../scripts/form-validation.js"></script>
+    
   </head>
   <body>
     <?php include("../includes/header.php"); ?>
 
     <section class="center-items center-self body">
       <h2 class="bold">Login</h2>
+      <script type="text/javascript" src="../scripts/form-validation.js"></script>
       <form id="login" name="login" class="form" action="#" method="post" 
         onsubmit="return validateLogin(this);"
       >
