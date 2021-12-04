@@ -26,8 +26,21 @@
         <a href="account/account.php"><li>Account</li></a>
       </ul>
     </header>
-
-
+      
+    <div id = 'contents'>
+      <p>Welcome to TextBookBuddy</p>
+      <p>See how you can buy and sell TextBooks </p>
+</div>
+      <div id = buttons>
+      <form method="get" action="account/login.php">
+    <button type="submit"class="button1">Login</button>
+</form>
+<form method="get" action="account/signup.php">
+    <button type="submit" class="button1">Create An Account</button>
+</form>
+</div>
+      
+  
     <footer>
       
     </footer>

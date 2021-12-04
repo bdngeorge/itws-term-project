@@ -75,3 +75,30 @@ header h1 {
   display: inline-block;
   list-style: none;
 }
+#contents{
+  font-size: 1.5em;
+  left:300px;
+  top:200px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:blueviolet;
+
+
+}
+#buttons{
+ 
+  font-variant: small-caps;
+  height: 75px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 200px;
+  left: 650px;
+
+
+
+
+
+
+
+
+}

@@ -43,7 +43,8 @@
     $desc = $record['desc'];
     $file = $record['imgID'];
     $price = $record['price'];
-var_dump($record);    echo "<div id='item'>";
+
+    echo "<div id='item'>";
     echo "<img src='../resources/bookImg/$file'>";
   
 
@@ -55,15 +56,16 @@ var_dump($record);    echo "<div id='item'>";
     echo '<br>';
     echo '<strong>ISBN:</strong>'.$isbn;
     echo '<br>';
-    echo $subj;
+    echo '<strong>Subject Code:</strong>'.$subj;
     echo '<br>';
-    echo $condition;
+    echo '<strong>Condition:</strong>'.$condition;
     echo '<br>';
-    echo $desc;
+    echo '<strong>Description:</strong>'.$desc;
     echo '<br>';
-    echo $price;
+    echo '<strong>Subject Code:</strong>'.$price.'$';
     echo '</div>';
     echo "</div>";
+    
 
     
     
