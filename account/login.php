@@ -2,12 +2,14 @@
   session_start();
   include ('../includes/dbconnect.php');
   if ($dbOK) {
+    // if($_SERVER['REQUEST_METHOD'] == 'POST')
     if (isset($_POST['submit']))
     {
       $email = $_POST['email'];
       $password = $_POST['password'];
          
       // error checking 
+
       $query = "select * from users where email = '$email'";
       $result = $db->query($query);
       $numRecords = $result->num_rows;
@@ -18,8 +20,6 @@
         $user_data = $result->fetch_assoc();
         
         // if password is correct, log user in
-
-        // NEED TO ESCAPE PASSWORD AND USEREMAIL !!!!!!!!!!!!!!!!
         if($user_data['password'] === $password) 
         {
           $_SESSION['userEmail'] = $user_data['email'];
@@ -29,7 +29,7 @@
           die;
         } 
       }
-      echo "<div id='error'>Sorry, We can not find an account with the provided email and password</div>";
+      echo "your password or username is incorrect";
     } 
   }
 
@@ -50,7 +50,6 @@
     <script type="text/javascript" src="../scripts/form-validation.js"></script>
   </head>
   <body>
-    <!-- navigation doesn't work here -->
     <?php include("../includes/header.php"); ?>
 
     <section class="center-items center-self body">
