@@ -18,60 +18,58 @@
     </script>
   </head>
   <body>
-    <header>
-      <a href="../"> <h1 class="logo left">  Textbook Buddy </h1> </a>
-      <ul class="hmenu right">
-        <a href="catalog.php"><li>Catalog</li></a>
-        <a href="uploadBooks.php"><li>Sell</li></a> 
-        <a href="../account/account.php"><li>Account</li></a>
-      </ul>
-    </header>
+    <?php include("../includes/header.php"); ?>
 
     <!-- Show books-->
-    <?php include("filters.php"); ?>
+    <div id="body">
+      <?php include("filters.php"); ?>
+  
+      <div id="books">
+        <h1 style="margin-left:20px;">Books</h1>
+        <div id="bookList">
+          <?php
+            // include("../includes/dbconnect.php");
+            if ($dbOK){
+              // show all books for if none selected
+              $query = "SELECT * from books";
 
-    <div >
-      <?php
-        // include("../includes/dbconnect.php");
-        if ($dbOK){
-          // show all books for if none selected
-          $query = "SELECT * from books";
+              if (!empty($where)) {
+                $sqlcond = implode(" and ", $where);
+                $query .= " where $sqlcond";
+              }
 
-          if (!empty($where)) {
-            $sqlcond = implode(" and ", $where);
-            $query .= " where $sqlcond";
-          }
+              $result = $db->query($query);
+              $numRecords = $result->num_rows;
 
-          $result = $db->query($query);
-          $numRecords = $result->num_rows;
+              // if numRecords = 0, show message 
+              for ($i=0; $i < $numRecords; $i++) {
+                $record = $result->fetch_assoc();
+                $title = $record['title'];
+                $id = $record['id'];
+                $file = $record['imgID'];
 
-          // if numRecords = 0, show message 
-          for ($i=0; $i < $numRecords; $i++) {
-            $record = $result->fetch_assoc();
-            $title = $record['title'];
-            $id = $record['id'];
-            $file = $record['imgID'];
+                echo "<div class='book'>";
 
-            echo "<div>";
+                echo "<a href='bookInfo.php?id=$id'><img style='width:250px;height:300px;' src='../resources/bookImg/$file'></a>";
 
-            echo "<strong>$title</strong>";
+                echo "<h5>$title</h5>";
 
-            echo "<a href='bookInfo.php?id=$id'><img style='width:250px;' src='../resources/bookImg/$file'></a>";
+                echo "<p>".ucfirst($record['condition'])." - ";
 
-            echo $record['desc'];
+                echo "$".$record['price']."</p>";
 
-            echo "<br>";
+                echo "</div>";
 
-            echo $record['condition'];
-            
-            echo "<br><br><br>";
-            echo "</div>";
+              }
+            }
 
-          }
-        }
-
-      ?>
+          ?>
+        </div>
+        
       </div>
+    </div>
+    
+
     <footer>
     </footer>
   </body>
