@@ -55,12 +55,51 @@ function validateSignUp(formObj) {
   }
   if(message != ""){
     alert(message);
-    return false;
-    
+    return false;    
   }
   return true;
 }
 
 function validateUpload(formObj) {
-  
+  var message = "";
+  if(formObj.title.value == "") {
+    message += "Please enter a title.\n";
+  }
+  if(formObj.authors.value == "") {
+    message += "Please enter an author or authors.\n";
+  }
+  if(formObj.desc.value == "") {
+    message += "Please enter a description.\n";
+  }
+  if(formObj.isbn.value == "") {
+    message += "Please enter an ISBN.\n";
+  } else {
+    let isbn = formObj.isbn.value;
+    for(let i = 0; i < isbn.length; i++) {
+      if(!(isbn[i] >= '0' && isbn[i] <= '9')) {
+        message += "ISBN must only contain digits 0-9.\n";
+        break;
+      }
+    }
+  }
+  if(formObj.price.value == "") {
+    message += "Please enter an price.\n";
+  } else {
+    let price = formObj.price.value;
+    for(let i = 0; i < price.length; i++) {
+      if(!price[i] == '.' && !(price[i] >= '0' && price[i] <= '9')) {
+        message += "Price must only contain digits 0-9.\n";
+        break;
+      }
+    }
+  }
+  if(formObj.file.value == "") {
+    message += "Please provide an image for the textbook.\n";
+  }
+
+  if(message != ""){
+    alert(message);
+    return false;
+  }
+  return true;
 }

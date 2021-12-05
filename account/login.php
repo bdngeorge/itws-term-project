@@ -27,7 +27,7 @@
           die;
         } 
       }
-      echo "your password or username is incorrect";
+      echo "<script>alert(your password or username is incorrect);<script>";
     } 
   }
 
@@ -45,6 +45,7 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
       crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="../scripts/form-validation.js"></script>
     
   </head>
   <body>

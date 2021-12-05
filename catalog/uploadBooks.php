@@ -35,12 +35,6 @@
 
     $imgExt = array('jpeg', 'jpg', 'png');
 
-
-    if (!in_array($fileExt, $imgExt) or !$fileError === 0 or $filesize >= 10000000){
-      echo "Error with file, please upload a different file. File must be of typpe jpep, jpg, or png. File size must be under 10MB. Your file size is ";
-      echo $filesize. ".";
-    } 
-
     $uploads_dir = "../resources/bookImg";
     $imgIdentifier=  $subj .'-'. rand(999999999, 9999999999).'.'.$fileExt;
     move_uploaded_file($tmploc, $uploads_dir.'/'.$imgIdentifier);
@@ -50,13 +44,6 @@
     $statement->bind_param("sssssssds", $imgIdentifier, $title, $authors, $isbn, $subj, $cond, $desc, $price, $userEmail);
     $success = $statement->execute();
     $statement->close();
-
-    if ($success) {
-      echo "Your file was successfully uploaded";
-    } else {
-      echo "Sorry " . $userEmail;
-      echo "There was an error on our server, please try again";
-    }
   }
   
 ?>
@@ -74,6 +61,7 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
       crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="../scripts/form-validation.js"></script>
   </head>
   <body>
     <?php include("../includes/header.inc.php"); ?>
