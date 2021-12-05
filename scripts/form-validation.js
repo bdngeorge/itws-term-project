@@ -75,10 +75,14 @@ function validateUpload(formObj) {
     message += "Please enter an ISBN.\n";
   } else {
     let isbn = formObj.isbn.value;
-    for(let i = 0; i < isbn.length; i++) {
-      if(!(isbn[i] >= '0' && isbn[i] <= '9')) {
-        message += "ISBN must only contain digits 0-9.\n";
-        break;
+    if(isbn.length != 13) {
+      message += "IBSN must be 13 digits long.\n";
+    } else {
+      for(let i = 0; i < isbn.length; i++) {
+        if(!(isbn[i] >= '0' && isbn[i] <= '9')) {
+          message += "ISBN must only contain digits 0-9.\n";
+          break;
+        }
       }
     }
   }
