@@ -41,12 +41,12 @@
         echo '</div>';
       }
     ?>
-    <div id = "sellerlog">
-      <!-- show all books user sold -->
-      <a href="sellerCatalog.php"> My books </a> <br>
-      <!-- logout -->
-      <a href="logout.php">Logout</a>
-    </div>
+      <div id = "sellerlog">
+        <!-- show all books user sold -->
+        <a href="sellerCatalog.php"> My books </a> <br>
+        <!-- logout -->
+        <a href="logout.php">Logout</a>
+      </div>
     </div>
   </body>
 </html>

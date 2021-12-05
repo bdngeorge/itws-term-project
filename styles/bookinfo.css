@@ -1,27 +1,20 @@
 #item{
-position:relative;
-
-
-
-
+    position:relative;
+    width: 80%;
+    margin: auto;
 }
 
 img {
-    width:250px;
+    width:350px;
     position:absolute;
-   top:10px;
-   left:10px;
-
-
+    top:10px;
+    left:10px;
 }
 
 #bookInfo{
     position:absolute;
-    background-color: green;
-    top:10px;
-   left:310px;
-    
-
-
-  
+    background-color: #a8d5f8;
+    top:50px;
+    left:400px;
+    padding: 10px;
 }

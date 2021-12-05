@@ -1,24 +1,21 @@
 #outer {
     margin: auto;
+    margin-top: 20px;
     width: 50%;
     padding: 10px;
-    background-color: whitesmoke;
-    border: 10px solid blueviolet; 
+    background-color: #f4f7f8;
+    border: 10px solid #a8d5f8; 
     padding: 20px; 
-    height: 100px;
-
 }
 
 #middle{
     font-size: 2em;
     font-variant: small-caps;
     font-weight: bold;
-    bottom: 200px;
-    left: 650px;
+    float: left;
+    margin-right: 250px;
 }
 
 #sellerlog{
    font-size: 2em;
-   margin-left: 600px;
-   margin-top: -75px;
 }

@@ -48,7 +48,7 @@ CREATE TABLE books(
     , authors VARCHAR(1000)
     , isbn VARCHAR(20)
     , subjectCode CHAR(4)
-    , `condition` CHAR(4)
+    , `condition` CHAR(9)
     , `desc` text
     , price numeric(5, 2)
     , sellerEmail VARCHAR(20) not null
@@ -56,20 +56,3 @@ CREATE TABLE books(
     , FOREIGN KEY (subjectCode) references subjects(subjectCode) on delete set null
     , FOREIGN KEY (sellerEmail) references users(email) on delete cascade
 );
-
--- user reserve books 
--- functionality not yet created
-CREATE TABLE reservebooks(
-    buyerEmail VARCHAR(20) not null
-    , bookID INT not null
-    , FOREIGN KEY (buyerEmail) references users(email) on delete cascade
-    , FOREIGN KEY (bookID) references books(id) on delete cascade
-
-)
-
--- will need this if we want to allow multiple images
--- CREATE TABLE BookIMG (
---     bookID INT
---     , ImgNo INT primary key NOT NULL
---     , FOREIGN KEY (bookID) references books(bookID) on delete cascade
--- )

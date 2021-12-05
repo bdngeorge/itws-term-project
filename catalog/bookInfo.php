@@ -16,7 +16,7 @@
   <body>
     <?php include("../includes/header.inc.php"); ?>
     <?php
-      include("../includes/dbconnect.php");
+      include("../includes/dbconnect.inc.php");
 
       if($dbOK) {
         $id = mysqli_real_escape_string($db, $_GET['id']);
@@ -32,6 +32,7 @@
         $desc = $record['desc'];
         $file = $record['imgID'];
         $price = $record['price'];
+        $contact = $record['sellerEmail'];
 
         echo "<div id='item'>";
         echo "<img src='../resources/bookImg/$file'>";
@@ -41,17 +42,19 @@
         
         echo '<h1>'.$title.'</h1>';
         echo '<br>';
-        echo '<strong>Authors:</strong>'.$authors;
+        echo '<strong>Authors:</strong> '.$authors;
         echo '<br>';
-        echo '<strong>ISBN:</strong>'.$isbn;
+        echo '<strong>ISBN:</strong> '.$isbn;
         echo '<br>';
-        echo '<strong>Subject Code:</strong>'.$subj;
+        echo '<strong>Subject Code:</strong> '.strtoupper($subj);
         echo '<br>';
-        echo '<strong>Condition:</strong>'.$condition;
+        echo '<strong>Condition:</strong> '.$condition;
         echo '<br>';
-        echo '<strong>Description:</strong>'.$desc;
+        echo '<strong>Description:</strong> '.$desc;
         echo '<br>';
-        echo '<strong>Subject Code:</strong>'.$price.'$';
+        echo '<strong>Price: </strong> '.'$'.$price;
+        echo '<br>';
+        echo '<strong>Contact: </strong> '. $contact;
         echo '</div>';
         echo "</div>";
       }
