@@ -76,7 +76,7 @@
     </script>
   </head>
   <body>
-    <?php include("../includes/header.php"); ?>
+    <?php include("../includes/header.inc.php"); ?>
     <section class="center-items center-self body" style="margin-top: 20px;">
       <h2 class="bold"> Sell Book </h2>
 
