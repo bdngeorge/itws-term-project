@@ -17,16 +17,6 @@ function validateLogin(formObj) {
   if(formObj.password.value == "") {
     message += "Please enter a password.";
   } 
-  // else {
-  //   if(!pass_regex.test(formObj.password.value)) {
-  //     message += "Password must:\n";
-  //     message += "- Contain at least 8 characters\n";
-  //     message += "- Contain at least 1 number\n";
-  //     message += "- Contain at least 1 special character\n";
-  //     message += "-no spaces";
-  //     formObj.password.value = "";
-  //   }
-  // }
   if(message != "") {
     alert(message);
     return false;

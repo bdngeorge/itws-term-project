@@ -1,3 +1,14 @@
+/* 
+COLOR PALETTE -- CSS HEX 
+--aqua-haze: #f4f7f8;
+--geyser: #cedcdd;
+--picton-blue: #449fee;
+--sail: #a8d5f8;
+--jordy-blue: #8cccf4;
+--link-water: #cee6f3;
+--geyser: #dce4e6;
+*/
+
 *{
   margin: 0;
   font-family: Verdana, sans-serif;
@@ -9,18 +20,22 @@ header {
   font-weight: bold;
   background-color: rgb(241, 239, 239);
   position: relative;
+
+  color: black;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(209, 209, 209, 0.555); 
 }
 
 header h1 {
   font-size: 40px;
   position: absolute;
+  color: black;
+  padding: 0 0 0 1vw;
 }
-.welcome{
 
-  font-size: 30px;
-  text-align: center;
-
-
+header a {
+  text-decoration: none;
 }
 
 .bold {
@@ -75,37 +90,9 @@ header h1 {
 }
 
 .hmenu li {
-  font-size: 1.5em;
   background-color: rgb(179, 177, 177);
   border-radius: 10px;
   padding: 0 5px 0 5px;
   display: inline-block;
   list-style: none;
-}
-#contents{
-  font-size: 1.5em;
-  left:600px;
-  top:200px;
-  text-align: center;
-  font-family: 'Times New Roman', Times, serif;
-  /*background-color:blu;*/
-
-
-}
-#buttons{
- 
-  font-variant: small-caps;
-  height: 75px;
-  font-weight: bold;
-  position: absolute;
-  bottom: 200px;
-  right: 200px;
-
-
-
-
-
-
-
-
 }

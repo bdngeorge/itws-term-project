@@ -9,7 +9,6 @@
       $password = $_POST['password'];
          
       // error checking 
-
       $query = "select * from users where email = '$email'";
       $result = $db->query($query);
       $numRecords = $result->num_rows;
@@ -18,7 +17,6 @@
       if($numRecords > 0)
       {      
         $user_data = $result->fetch_assoc();
-        
         // if password is correct, log user in
         if($user_data['password'] === $password) 
         {
@@ -50,7 +48,7 @@
     
   </head>
   <body>
-    <?php include("../includes/header.php"); ?>
+    <?php include("../includes/header2.php"); ?>
 
     <section class="center-items center-self body">
       <h2 class="bold">Login</h2>
