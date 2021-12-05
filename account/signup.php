@@ -7,7 +7,7 @@
     $fname = htmlspecialchars(trim($_POST['fname']));
     $lname = htmlspecialchars(trim($_POST['lname']));
     $email = htmlspecialchars(trim($_POST['email']));
-    $pass = htmlspecialchars($_POST['password'])
+    $pass = htmlspecialchars($_POST['password']);
 
     $fname = mysqli_real_escape_string($db, $fname);
     $lname = mysqli_real_escape_string($db, $lname);

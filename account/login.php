@@ -48,7 +48,7 @@
     
   </head>
   <body>
-    <?php include("../includes/header.inc.php"); ?>
+    <?php include("../includes/header2.inc.php"); ?>
 
     <section class="center-items center-self body">
       <h2 class="bold">Login</h2>
