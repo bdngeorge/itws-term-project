@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>TextbookBuddy</title>
     <link rel="stylesheet" href="../styles/general.css">
-    <link rel="stylesheet" href="../styles/catalog.css">
+    <link rel="stylesheet" href="../styles/sellerCatalog.css">
     <script 
       src="https://code.jquery.com/jquery-3.6.0.min.js" 
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
@@ -22,7 +22,7 @@
     <!-- Show books-->
     <div id="body">
       <div id="books">
-        <h1 style="margin-left:20px;">Books</h1>
+        <h1 style="margin-left:20px;">My Books</h1>
         <div id="bookList">
           <?php
             include("../includes/dbconnect.inc.php");
@@ -45,13 +45,13 @@
 
                 echo "<a href='../catalog/bookInfo.php?id=$id'><img style='width:250px;height:300px;border: 1px solid #f0ebd8;' src='../resources/bookImg/$file'></a>";
 
-                echo "<a href='deleteBook.php?id=$id'><p> Delete <p> </a>";
-
                 echo "<h5>$title</h5>";
 
                 echo "<p>".ucfirst($record['condition'])." - ";
 
                 echo "$".$record['price']."</p>";
+
+                echo "<a href='deleteBook.php?id=$id'><p> Delete <p> </a>";
 
                 echo "</div>";
 

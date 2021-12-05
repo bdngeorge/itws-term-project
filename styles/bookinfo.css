@@ -1,20 +1,39 @@
-#item{
-    position:relative;
-    width: 80%;
+#body{
+    background-color: #1d2d44;
+    width: 90%;
+    height: 40vw;
+    left: 0;
+    right: 0;
     margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #f0ebd8;
+}
+
+#book {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 img {
     width:350px;
-    position:absolute;
     top:10px;
     left:10px;
 }
 
 #bookInfo{
-    position:absolute;
-    background-color: #a8d5f8;
-    top:50px;
-    left:400px;
-    padding: 10px;
+    background-color: #748cab;
+    color: #f0ebd8;
+    width: 45%;
+    padding: 0 20px 10px 20px;
+    border-radius: 10%;
+}
+#bookInfo strong {
+    display: block;
+    padding-top: 20px;
 }

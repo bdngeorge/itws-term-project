@@ -1,7 +1,8 @@
 /* filter sidebar */
 #body {
   display: flex;
-  margin-top:20px;
+  justify-content: center;
+  margin-top:50px;
 }
 
 #books {
@@ -34,6 +35,14 @@
 
 .book h5 {
   font-size: .9em;
+}
+
+.book a {
+  text-decoration: none;
+  color: #748cab;
+}
+.book a:hover {
+  color: #3e5c76;
 }
 
 #sidebar{

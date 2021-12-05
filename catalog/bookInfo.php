@@ -15,50 +15,58 @@
   </head>
   <body>
     <?php include("../includes/header.inc.php"); ?>
-    <?php
-      include("../includes/dbconnect.inc.php");
 
-      if($dbOK) {
-        $id = mysqli_real_escape_string($db, $_GET['id']);
-        $query = "SELECT * FROM books WHERE id = $id limit 1";
-        $result = $db->query($query);
-        $record = $result->fetch_assoc();
-        $db->close();
+    <div id="body">
+      <?php
+        include("../includes/dbconnect.inc.php");
 
-        $title = $record['title'];
-        $authors = $record['authors'];
-        $isbn = $record['isbn'];
-        $subj = $record['subjectCode'];
-        $condition = $record['condition'];
-        $desc = $record['desc'];
-        $file = $record['imgID'];
-        $price = $record['price'];
-        $contact = $record['sellerEmail'];
+        if($dbOK) {
+          $id = mysqli_real_escape_string($db, $_GET['id']);
+          $query = "SELECT * FROM books WHERE id = $id limit 1";
+          $result = $db->query($query);
+          $record = $result->fetch_assoc();
+          $db->close();
 
-        echo "<div id='item'>";
-        echo "<img src='../resources/bookImg/$file'>";
-      
+          $title = $record['title'];
+          $authors = $record['authors'];
+          $isbn = $record['isbn'];
+          $subj = $record['subjectCode'];
+          $condition = $record['condition'];
+          $desc = $record['desc'];
+          $file = $record['imgID'];
+          $price = $record['price'];
+          $contact = $record['sellerEmail'];
 
-        echo "<div id='bookInfo'>";
+          
+          echo '<h1 style="font-size:2.5vw">'.$title.'</h1>';
+
+          echo "<div id='book'>";
+
+          echo "<img src='../resources/bookImg/$file' style='width:45%;border:1px solid #f0ebd8'>";
         
-        echo '<h1>'.$title.'</h1>';
-        echo '<br>';
-        echo '<strong>Authors:</strong> '.$authors;
-        echo '<br>';
-        echo '<strong>ISBN:</strong> '.$isbn;
-        echo '<br>';
-        echo '<strong>Subject Code:</strong> '.strtoupper($subj);
-        echo '<br>';
-        echo '<strong>Condition:</strong> '.$condition;
-        echo '<br>';
-        echo '<strong>Description:</strong> '.$desc;
-        echo '<br>';
-        echo '<strong>Price: </strong> '.'$'.$price;
-        echo '<br>';
-        echo '<strong>Contact: </strong> '. $contact;
-        echo '</div>';
-        echo "</div>";
-      }
-    ?>
+
+          echo "<div id='bookInfo'>";
+          
+          echo '<br>';
+          echo '<strong>Authors:</strong> '.$authors;
+          echo '<br>';
+          echo '<strong>ISBN:</strong> '.$isbn;
+          echo '<br>';
+          echo '<strong>Subject Code:</strong> '.strtoupper($subj);
+          echo '<br>';
+          echo '<strong>Condition:</strong> '.$condition;
+          echo '<br>';
+          echo '<strong>Description:</strong> '.$desc;
+          echo '<br>';
+          echo '<strong>Price: </strong> '.'$'.$price;
+          echo '<br>';
+          echo '<strong>Contact: </strong> '. $contact;
+          echo '</div>';
+          echo "</div>";
+        }
+      ?>
+    </div>
+    
+
   </body>
 </html>
