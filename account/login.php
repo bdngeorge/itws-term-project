@@ -1,19 +1,16 @@
 <?php
   session_start();
-  include ('../includes/dbconnect.php');
+  include ('../includes/dbconnect.inc.php');
   if ($dbOK) {
-    // if($_SERVER['REQUEST_METHOD'] == 'POST')
     if (isset($_POST['submit']))
     {
       $email = $_POST['email'];
       $password = $_POST['password'];
          
-      // error checking 
       $query = "select * from users where email = '$email'";
       $result = $db->query($query);
       $numRecords = $result->num_rows;
       
-      // echo mysqli_num_rows($result);
       if($numRecords > 0)
       {      
         $user_data = $result->fetch_assoc();
@@ -48,7 +45,7 @@
     
   </head>
   <body>
-    <?php include("../includes/header2.php"); ?>
+    <?php include("../includes/header2.inc.php"); ?>
 
     <section class="center-items center-self body">
       <h2 class="bold">Login</h2>

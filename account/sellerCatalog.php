@@ -17,7 +17,7 @@
     </script>
   </head>
   <body>
-    <?php include("../includes/header2.php"); ?>
+    <?php include("../includes/header2.inc.php"); ?>
 
     <!-- Show books-->
     <div id="body">
@@ -25,7 +25,7 @@
         <h1 style="margin-left:20px;">Books</h1>
         <div id="bookList">
           <?php
-            include("../includes/dbconnect.php");
+            include("../includes/dbconnect.inc.php");
             if ($dbOK){
               $userEmail = $_SESSION['userEmail'];
               // show all books sold by user

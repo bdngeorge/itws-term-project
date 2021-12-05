@@ -7,7 +7,7 @@
     die();
   }
 
-  include("../includes/dbconnect.php");
+  include("../includes/dbconnect.inc.php");
 
   $userEmail= $_SESSION['userEmail'];
 
@@ -78,7 +78,7 @@
     </script>
   </head>
   <body>
-    <?php include("../includes/header.php"); ?>
+    <?php include("../includes/header.inc.php"); ?>
     <section class="">
       <h2 class="bold"> Sell Book </h2>
 

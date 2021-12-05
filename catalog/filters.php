@@ -1,5 +1,5 @@
 <?php 
-  include ('../includes/dbconnect.php'); 
+  include ('../includes/dbconnect.inc.php'); 
   $where = array();
 ?>
 
