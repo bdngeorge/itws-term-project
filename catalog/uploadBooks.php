@@ -15,19 +15,18 @@
   if (isset($_POST['submit']))
   {
 
-    // make title, authors, subject, cond, price required
     $title = htmlspecialchars(trim($_POST['title']));
     $authors = htmlspecialchars(trim($_POST['authors']));
     $isbn  = htmlspecialchars(trim($_POST['isbn']));
-    // from dropdown menu
     $subj  = htmlspecialchars(trim($_POST['subj']));
     $cond  = htmlspecialchars(trim($_POST['cond']));
     $desc  = htmlspecialchars(trim($_POST['desc']));
-    // this is a number
     $price  = htmlspecialchars(trim($_POST['price']));
 
-    // file infomation
-    // new file name
+    $title = mysqli_real_escape_string($db, $title);
+    $authors = mysqli_real_escape_string($db, $authors);
+    $isbn = mysqli_real_escape_string($db, $isbn);
+    $desc = mysqli_real_escape_string($db, $desc);
 
     $fileName = $_FILES['file']['name'];
     $tmploc = $_FILES['file']['tmp_name'];

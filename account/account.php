@@ -22,24 +22,23 @@
     <div class = "center-text ">
       <h1> Account Information </h1>
     </div>
-
     <?php
       if($dbOK) {
-        $userEmail = $_SESSION['userEmail'];
-          $id = mysqli_real_escape_string($db, $id);
-          $result = $db->query($query);
-          $record = $result->fetch_assoc();
+        $userEmail = mysqli_real_escape_string($db, $_SESSION['userEmail']);
+        $query = "SELECT * FROM users WHERE email = '$userEmail'";
+        $result = $db->query($query);
+        $record = $result->fetch_assoc();
 
-          $fname = $record['fname'];
-          $lname = $record['lname'];
-          
-          echo '<div id = "outer">' ;
-          echo '<div id = "middle">';
-          echo '<strong>Name: </strong>'.$fname." ";
-          echo $lname;
-          echo '<br>';
-          echo '<strong>Email: </strong>'.$userEmail;
-          echo '</div>';
+        $fname = $record['fname'];
+        $lname = $record['lname'];
+        
+        echo '<div id = "outer">' ;
+        echo '<div id = "middle">';
+        echo '<strong>Name: </strong>'.$fname." ";
+        echo $lname;
+        echo '<br>';
+        echo '<strong>Email: </strong>'.$userEmail;
+        echo '</div>';
       }
     ?>
     <div id = "sellerlog">

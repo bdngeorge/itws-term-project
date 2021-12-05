@@ -27,7 +27,7 @@
   }
 
   if (isset($_POST['priceCeil']) and !empty($_POST['priceCeil'])) {   
-    $priceCeil = $_POST['priceCeil'];
+    $priceCeil = mysqli_real_escape_string($db, $_POST['priceCeil']);
     $sqlcond = "price <= $priceCeil";
     array_push($where, $sqlcond);
   } 

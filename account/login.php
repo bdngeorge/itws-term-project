@@ -4,8 +4,11 @@
   if ($dbOK) {
     if (isset($_POST['submit']))
     {
-      $email = $_POST['email'];
-      $password = $_POST['password'];
+      $email =  htmlspecialchars(trim($_POST['email']));
+      $password = htmlspecialchars(trim($_POST['password']));
+
+      $email = mysqli_real_escape_string($db, $email);
+      $password = mysqli_real_escape_string($db, $password);
          
       $query = "select * from users where email = '$email'";
       $result = $db->query($query);

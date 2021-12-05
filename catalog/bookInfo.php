@@ -19,8 +19,7 @@
       include("../includes/dbconnect.php");
 
       if($dbOK) {
-        $id = $_GET['id'];
-        // $id = mysqli_real_escape_string($db, $id);
+        $id = mysqli_real_escape_string($db, $_GET['id']);
         $query = "SELECT * FROM books WHERE id = $id limit 1";
         $result = $db->query($query);
         $record = $result->fetch_assoc();

@@ -27,10 +27,10 @@
           <?php
             include("../includes/dbconnect.inc.php");
             if ($dbOK){
-              $userEmail = $_SESSION['userEmail'];
+              $userEmail = mysqli_real_escape_string($db, $_SESSION['userEmail']);
               // show all books sold by user
               $query = "SELECT * from books where sellerEmail = '$userEmail'";
-    
+
               $result = $db->query($query);
               $numRecords = $result->num_rows;
 
