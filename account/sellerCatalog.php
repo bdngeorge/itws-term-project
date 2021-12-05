@@ -43,7 +43,7 @@
 
                 echo "<div class='book'>";
 
-                echo "<a href='../catalog/bookInfo.php?id=$id'><img style='width:250px;height:300px;' src='../resources/bookImg/$file'></a>";
+                echo "<a href='../catalog/bookInfo.php?id=$id'><img style='width:250px;height:300px;border: 1px solid #f0ebd8;' src='../resources/bookImg/$file'></a>";
 
                 echo "<a href='deleteBook.php?id=$id'><p> Delete <p> </a>";
 

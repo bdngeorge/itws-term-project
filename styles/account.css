@@ -1,21 +1,43 @@
-#outer {
-    margin: auto;
-    margin-top: 20px;
+
+.body {
+    background-color: #1d2d44;
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    padding: 10px;
-    background-color: #f4f7f8;
-    border: 10px solid #a8d5f8; 
-    padding: 20px; 
+    height: 50%;
+    color: #f0ebd8;
 }
 
-#middle{
-    font-size: 2em;
-    font-variant: small-caps;
+.body h1 {
+    font-size: 3vw;
+    padding-bottom: 20px;
+}
+
+#outer {
+    background-color: #748cab;
+    border: 10px solid #748cab; 
+    border-radius: 10%;
+    width: 80%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2vw;
+}
+
+button {
+    transform: translateY(20%);
+    font-size: .8vw;
+    border:0 none;
+    width: 10vw;
+    height: 2vw;
     font-weight: bold;
-    float: left;
-    margin-right: 250px;
-}
+    color: #f0ebd8;
+    background-color: #0d1321;
+  }
 
-#sellerlog{
-   font-size: 2em;
+#sellerlog a {
+   text-decoration:none;
+   color: #3e5c76;
 }

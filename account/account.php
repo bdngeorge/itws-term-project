@@ -19,36 +19,41 @@
   </head>
   <body>
     <?php include("../includes/header2.inc.php"); ?>
-    <div class = "center-text ">
-      <h1> Account Information </h1>
-    </div>
-    <?php
-      if($dbOK) {
-        $userEmail = mysqli_real_escape_string($db, $_SESSION['userEmail']);
-        $query = "SELECT * FROM users WHERE email = '$userEmail'";
-        $result = $db->query($query);
-        $record = $result->fetch_assoc();
-        $db->close();
-
-        $fname = $record['fname'];
-        $lname = $record['lname'];
-        
-        echo '<div id = "outer">' ;
-        echo '<div id = "middle">';
-        echo '<strong>Name: </strong>'.$fname." ";
-        echo $lname;
-        echo '<br>';
-        echo '<strong>Email: </strong>'.$userEmail;
-        echo '</div>';
-      }
-    ?>
-      <div id = "sellerlog">
-        <!-- show all books user sold -->
-        <a href="sellerCatalog.php"> My books </a> <br>
-        <!-- logout -->
-        <a href="logout.php">Logout</a>
+    <section class="center-items center-self body">
+      <div class = "center-text ">
+        <h1>Account Information</h1>
       </div>
-    </div>
+
+      <?php
+        if($dbOK) {
+          $userEmail = mysqli_real_escape_string($db, $_SESSION['userEmail']);
+          $query = "SELECT * FROM users WHERE email = '$userEmail'";
+          $result = $db->query($query);
+          $record = $result->fetch_assoc();
+          $db->close();
+
+          $fname = $record['fname'];
+          $lname = $record['lname'];
+          
+          echo '<div id = "outer">' ;
+          echo 'Name: '.$fname." ";
+          echo $lname;
+          echo '<br>';
+          echo 'Email: '.$userEmail;
+        }
+      ?>
+
+        <div id = "sellerlog">
+          <!-- show all books user sold -->
+          <button type="button" onclick="window.location.href='sellerCatalog.php'" class="button">My Books</button>
+          <br>
+          <!-- logout -->
+          <button type="button" onclick="window.location.href='logout.php'" class="button">Logout</button>
+          
+        </div>
+      </div>
+    </section>
+    
   </body>
 </html>
 

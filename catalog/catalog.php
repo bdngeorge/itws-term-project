@@ -45,7 +45,7 @@
 
                 echo "<div class='book'>";
 
-                echo "<a href='bookInfo.php?id=$id'><img style='width:250px;height:300px;' src='../resources/bookImg/$file'></a>";
+                echo "<a href='bookInfo.php?id=$id'><img style='width:250px;height:300px;border: 1px solid #f0ebd8;' src='../resources/bookImg/$file'></a>";
 
                 echo "<h5>$title</h5>";
 

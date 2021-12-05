@@ -8,6 +8,12 @@ COLOR PALETTE -- CSS HEX
   --jordy-blue: #8cccf4;
   --link-water: #cee6f3;
   --geyser: #dce4e6;
+
+  --eggshell: #f0ebd8
+  --shadow-blue: #748cab
+  --black-coral: #3e5c76
+  --prussion-blue: #1d2d44
+  --rich-black-fogra-29: #0d1321
   
 */
 
@@ -16,14 +22,17 @@ COLOR PALETTE -- CSS HEX
   font-family: Verdana, sans-serif;
 }
 
+body {
+  background-color: #f0ebd8;
+}
+
 header {
 	font-variant: small-caps;
   height: 3.5vw;
   display: flex;
   font-weight: bold;
-  border: 4px solid rgba(241, 239, 239, 0.555); 
-  background-color: rgba(241, 239, 239, 0.555);
-  color: black;
+  border: 4px solid #1d2d44; 
+  background-color: #1d2d44;
   align-items: center;
   justify-content: space-between;
 }
@@ -31,7 +40,7 @@ header {
 header h1 {
   font-size: 40px;
   padding: 0 0 0 20px;
-  color: black;
+  color: #f0ebd8;
 }
 
 header a {
@@ -75,14 +84,13 @@ header a {
   display: flex;
 }
 .hmenu a {
-  color: black;
+  color: #f0ebd8;
 	text-decoration: none;
   padding: 0 2.5vw 0 2.5vw;
 }
 .hmenu li {
   font-size: 1vw;
-  background-color: rgb(179, 177, 177);
-  border-radius: 25%;
+  background-color: #748cab;
   display: inline-block;
   width: 8vw;
   height: 1.5vw;

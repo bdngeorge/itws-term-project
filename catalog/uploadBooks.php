@@ -91,7 +91,7 @@
         <input type="text" id="isbn" name="isbn" placeholder="ISBN:"></br>
         <input type="number" min="0" step=".01" id="price" name="price" placeholder="Price:"></br>
         
-          <label class="field" for="subj" style="margin-top:20px"> <strong>Subject</strong></label>
+          <label class="field" for="subj" style="margin-top:20px;color: #f0ebd8;"> <strong>Subject</strong></label>
           <select id="subj" name="subj" >
             <?php
               if($dbOK) {
@@ -107,7 +107,7 @@
             ?>
           </select>
         
-          <label class="field" for="cond" style="margin-top:20px"> <strong>Condition</strong> </label>
+          <label class="field" for="cond" style="margin-top:20px;color: #f0ebd8;"> <strong>Condition</strong> </label>
           <select id="cond" name="cond">
             <option value="poor">Poor</option>
             <option value="fair">Fair</option>
@@ -117,7 +117,7 @@
             <option value="new">New</option>
           </select>
         
-          <label class="field" for="file" style="margin-top:20px"> <strong>Upload Image</strong> </label>
+          <label class="field" for="file" style="margin-top:20px;color: #f0ebd8;"> <strong>Upload Image</strong> </label>
           <input type="file" id="file" name="file" accept="image/*"></br>
     
 

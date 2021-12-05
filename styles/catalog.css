@@ -8,8 +8,9 @@
   width: 80%;
   height: 100%;
   margin-left: 20px;
-  border: 5px solid rgba(241, 239, 239, 0.555); 
-  background-color: rgba(241, 239, 239, 0.555);
+  border: 4px solid #1d2d44; 
+  background-color: #1d2d44;
+  color: #f0ebd8;
 }
 
 #bookList {
@@ -25,6 +26,7 @@
   align-items: center;
   width: 250px;
   margin: 0 0 10px 20px;
+  
 }
 
 .book h5 {
@@ -32,11 +34,12 @@
 }
 
 #sidebar{
+  color: #f0ebd8;
   width: 260px;
   clear: left;
   margin-left: 20px;
-  border: 4px solid rgba(241, 239, 239, 0.555); 
-  background-color: rgba(241, 239, 239, 0.555);
+  border: 10px solid #1d2d44; 
+  background-color: #1d2d44;
 }
 
 #sidebar input[type="text"], input[type="number"] {
@@ -54,9 +57,11 @@
 #sidebar input[type="submit"] {
   height: 2em;
   width: 5em;
-  border: 1px solid rgba(209, 209, 209, 0.555); 
-  background-color: rgba(209, 209, 209, 0.555);
   margin-top: 5px;
+  font-weight: bold;
+  color: #f0ebd8;
+  background-color: #748cab;
+  border: none;
 }
 
 
