@@ -88,14 +88,6 @@ function validateUpload(formObj) {
   }
   if(formObj.price.value == "") {
     message += "Please enter an price.\n";
-  } else {
-    let price = formObj.price.value;
-    for(let i = 0; i < price.length; i++) {
-      if(!price[i] == '.' && !(price[i] >= '0' && price[i] <= '9')) {
-        message += "Price must only contain digits 0-9.\n";
-        break;
-      }
-    }
   }
   if(formObj.file.value == "") {
     message += "Please provide an image for the textbook.\n";

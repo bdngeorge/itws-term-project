@@ -48,7 +48,7 @@
           echo "<div id='bookInfo'>";
           
           echo '<br>';
-          echo '<strong>Authors:</strong> '.$authors;
+          echo '<strong style="padding-top:0;">Authors:</strong> '.$authors;
           echo '<br>';
           echo '<strong>ISBN:</strong> '.$isbn;
           echo '<br>';
