@@ -70,3 +70,7 @@ function validateSignUp(formObj) {
   }
   return true;
 }
+
+function validateUpload(formObj) {
+  
+}

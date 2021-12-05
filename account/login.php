@@ -60,7 +60,7 @@
         <input type="email" id="email" name="email" placeholder="RPI Email:" class="left"><br>
         <input type="password" id="password" name="password" placeholder="Password:" class="left"><br>
         <!-- if i changed value="save" font size changes? -->
-        <input type="submit" id="lsubmit" name="submit" value="submit" class="button">
+        <input type="submit" id="lsubmit" name="submit" value="Submit" class="button">
       </form>
       <button type="button" onclick="window.location.href='signup.php'" class="button">Sign Up</button>
     </section>

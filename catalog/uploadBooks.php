@@ -69,7 +69,7 @@
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>TextbookBuddy</title>
-    <link rel="stylesheet" href="../styles/signup.css">
+    <link rel="stylesheet" href="../styles/upload.css">
     <link rel="stylesheet" href="../styles/general.css">
     <script 
       src="https://code.jquery.com/jquery-3.6.0.min.js" 
@@ -79,56 +79,52 @@
   </head>
   <body>
     <?php include("../includes/header.php"); ?>
-    <section class="">
+    <section class="center-items center-self body" style="margin-top: 20px;">
       <h2 class="bold"> Sell Book </h2>
 
       <form id="upload" name="login" class="form" 
-      method="post" action="uploadBooks.php"  enctype="multipart/form-data">
-        <label class="field" for="title"> Book Title:</label>
-        <input type="text" id="title" size="200" name="title" ></br>
+        method="post" action="uploadBooks.php"  enctype="multipart/form-data" 
+        onsubmit="return validateUpload(this);">
 
-        <label class="field" for="authors"> Authors</label>
-        <input type="text" id="authors" name="authors"></br>
+        <input type="text" id="title" size="200" name="title" placeholder="Title:"></br>
+        <input type="text" id="authors" name="authors" placeholder="Authors: (Seperate with commas)"></br>
 
-        <label class="field" for="subj"> Subject</label>
-        <select id="subj" name="subj">
-          <?php
-            if($dbOK) {
-              $query = "select * from subjects";
-              $result = $db->query($query);
-              $numRecord = $result->num_rows;
-              for($i=0; $i < $numRecord; $i++){
-                $record = $result->fetch_assoc();
-                echo '<option value="'.$record['subjectCode'].'">'
-                      .strtoupper($record['subjectCode']). '</option>';
-              }
-            }
-          ?>
-        </select>
-
-        <label class="field" for="desc"> Description</label>
-        <input type="text" id="desc" name="desc" class="left"></br>
-
-        <label class="field" for="isbn"> ISBN </label>
-        <input type="text" id="isbn" name="isbn" class="right"></br>
-
-        <label class="field" for="cond"> Condition </label>
-        <select id="cond" name="cond">
-          <option value="poor">Poor </option>
-          <option value="fair">Fair </option>
-          <option value="good">Good </option>
-          <option value="very good">Very Good </option>
-          <option value="like new">Like New </option>
-          <option value="new">New </option>
-        </select>
-
-        <label class="field" for="file"> Upload Image </label>
-        <input type="file" id="file" name="file"></br>
-
-        <label class="field" for="price"> Price</label>
-        <input type="number" min="0" step=".01" id="price" name="price" class="right"></br>
+        <input type="text" id="desc" name="desc" placeholder="Description:"></br>
+        <input type="text" id="isbn" name="isbn" placeholder="ISBN:"></br>
+        <input type="number" min="0" step=".01" id="price" name="price" placeholder="Price:"></br>
         
-        <input type="submit" name="submit" value="submit">
+          <label class="field" for="subj" style="margin-top:20px"> <strong>Subject</strong></label>
+          <select id="subj" name="subj" >
+            <?php
+              if($dbOK) {
+                $query = "select * from subjects";
+                $result = $db->query($query);
+                $numRecord = $result->num_rows;
+                for($i=0; $i < $numRecord; $i++){
+                  $record = $result->fetch_assoc();
+                  echo '<option value="'.$record['subjectCode'].'">'
+                        .strtoupper($record['subjectCode']). '</option>';
+                }
+              }
+            ?>
+          </select>
+        
+
+          <label class="field" for="cond" style="margin-top:20px"> <strong>Condition</strong> </label>
+          <select id="cond" name="cond">
+            <option value="poor">Poor</option>
+            <option value="fair">Fair</option>
+            <option value="good">Good</option>
+            <option value="very good">Very Good</option>
+            <option value="like new">Like New</option>
+            <option value="new">New</option>
+          </select>
+        
+          <label class="field" for="file" style="margin-top:20px"> <strong>Upload Image</strong> </label>
+          <input type="file" id="file" name="file" accept="image/*"></br>
+    
+
+        <input type="submit" name="submit" value="Submit" style="margin-top:20px">
       </form>
     </section>
             
