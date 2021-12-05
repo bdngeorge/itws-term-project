@@ -28,6 +28,7 @@
         $query = "SELECT * FROM users WHERE email = '$userEmail'";
         $result = $db->query($query);
         $record = $result->fetch_assoc();
+        $db->close();
 
         $fname = $record['fname'];
         $lname = $record['lname'];
