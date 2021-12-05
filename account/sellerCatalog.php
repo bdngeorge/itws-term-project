@@ -30,9 +30,9 @@
               $userEmail = mysqli_real_escape_string($db, $_SESSION['userEmail']);
               // show all books sold by user
               $query = "SELECT * from books where sellerEmail = '$userEmail'";
-
               $result = $db->query($query);
               $numRecords = $result->num_rows;
+              $db->close();
 
               // if numRecords = 0, show message 
               for ($i=0; $i < $numRecords; $i++) {
@@ -44,6 +44,8 @@
                 echo "<div class='book'>";
 
                 echo "<a href='../catalog/bookInfo.php?id=$id'><img style='width:250px;height:300px;' src='../resources/bookImg/$file'></a>";
+
+                echo "<a href='deleteBook.php?id=$id'><p> Delete <p> </a>";
 
                 echo "<h5>$title</h5>";
 

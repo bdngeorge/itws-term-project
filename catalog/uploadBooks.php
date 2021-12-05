@@ -76,7 +76,7 @@
     </script>
   </head>
   <body>
-    <?php include("../includes/header.php"); ?>
+    <?php include("../includes/header.inc.php"); ?>
     <section class="center-items center-self body" style="margin-top: 20px;">
       <h2 class="bold"> Sell Book </h2>
 
@@ -107,7 +107,6 @@
             ?>
           </select>
         
-
           <label class="field" for="cond" style="margin-top:20px"> <strong>Condition</strong> </label>
           <select id="cond" name="cond">
             <option value="poor">Poor</option>
@@ -122,7 +121,7 @@
           <input type="file" id="file" name="file" accept="image/*"></br>
     
 
-        <input type="submit" name="submit" value="Submit" style="margin-top:20px">
+        <input type="submit" name="submit" value="Submit" style="margin-top:10px">
       </form>
     </section>
             

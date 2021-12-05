@@ -23,6 +23,7 @@
         $query = "SELECT * FROM books WHERE id = $id limit 1";
         $result = $db->query($query);
         $record = $result->fetch_assoc();
+        $db->close();
 
         $title = $record['title'];
         $authors = $record['authors'];
