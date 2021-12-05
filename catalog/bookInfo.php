@@ -4,7 +4,6 @@
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>TextbookBuddy</title>
-    <!-- <link rel="stylesheet" href="../styles/login.css"> -->
     <link rel="stylesheet" href="../styles/general.css">
     <link rel="stylesheet" href="../styles/bookinfo.css">
 
@@ -15,58 +14,50 @@
     </script>
   </head>
   <body>
-    <header>
-      <a href="../"> <h1 class="logo left">  Textbook Buddy </h1> </a>
-      <ul class="hmenu right">
-        <a href="catalog.php"><li>Catalog</li></a>
-        <a href="uploadBooks.php"><li>Sell</li></a> 
-        <a href="../account/account.php"><li>Account</li></a>
-      </ul>
-    </header>
+    <?php include("../includes/header.inc.php"); ?>
+    <?php
+      include("../includes/dbconnect.inc.php");
 
+      if($dbOK) {
+        $id = mysqli_real_escape_string($db, $_GET['id']);
+        $query = "SELECT * FROM books WHERE id = $id limit 1";
+        $result = $db->query($query);
+        $record = $result->fetch_assoc();
 
-<?php
-  include("../includes/dbconnect.php");
+        $title = $record['title'];
+        $authors = $record['authors'];
+        $isbn = $record['isbn'];
+        $subj = $record['subjectCode'];
+        $condition = $record['condition'];
+        $desc = $record['desc'];
+        $file = $record['imgID'];
+        $price = $record['price'];
+        $contact = $record['sellerEmail'];
 
-  if($dbOK) {
-    $id = $_GET['id'];
-    // $id = mysqli_real_escape_string($db, $id);
-    $query = "SELECT * FROM books WHERE id = $id limit 1";
-    $result = $db->query($query);
-    $record = $result->fetch_assoc();
+        echo "<div id='item'>";
+        echo "<img src='../resources/bookImg/$file'>";
+      
 
-    $title = $record['title'];
-    $authors = $record['authors'];
-    $isbn = $record['isbn'];
-    $subj = $record['subjectCode'];
-    $condition = $record['condition'];
-    $desc = $record['desc'];
-    $file = $record['imgID'];
-    $price = $record['price'];
-var_dump($record);    echo "<div id='item'>";
-    echo "<img src='../resources/bookImg/$file'>";
-  
-
-    echo "<div id='bookInfo'>";
-    
-    echo '<h1>'.$title.'</h1>';
-    echo '<br>';
-    echo '<strong>Authors:</strong>'.$authors;
-    echo '<br>';
-    echo '<strong>ISBN:</strong>'.$isbn;
-    echo '<br>';
-    echo $subj;
-    echo '<br>';
-    echo $condition;
-    echo '<br>';
-    echo $desc;
-    echo '<br>';
-    echo $price;
-    echo '</div>';
-    echo "</div>";
-
-    
-    
-
-  }
-?>
+        echo "<div id='bookInfo'>";
+        
+        echo '<h1>'.$title.'</h1>';
+        echo '<br>';
+        echo '<strong>Authors:</strong> '.$authors;
+        echo '<br>';
+        echo '<strong>ISBN:</strong> '.$isbn;
+        echo '<br>';
+        echo '<strong>Subject Code:</strong> '.strtoupper($subj);
+        echo '<br>';
+        echo '<strong>Condition:</strong> '.$condition;
+        echo '<br>';
+        echo '<strong>Description:</strong> '.$desc;
+        echo '<br>';
+        echo '<strong>Price: </strong> '.'$'.$price;
+        echo '<br>';
+        echo '<strong>Contact: </strong> '. $contact;
+        echo '</div>';
+        echo "</div>";
+      }
+    ?>
+  </body>
+</html>

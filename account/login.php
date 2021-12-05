@@ -1,24 +1,22 @@
 <?php
   session_start();
-  include ('../includes/dbconnect.php');
+  include ('../includes/dbconnect.inc.php');
   if ($dbOK) {
-    // if($_SERVER['REQUEST_METHOD'] == 'POST')
     if (isset($_POST['submit']))
     {
-      $email = $_POST['email'];
-      $password = $_POST['password'];
-         
-      // error checking 
+      $email =  htmlspecialchars(trim($_POST['email']));
+      $password = htmlspecialchars(trim($_POST['password']));
 
+      $email = mysqli_real_escape_string($db, $email);
+      $password = mysqli_real_escape_string($db, $password);
+         
       $query = "select * from users where email = '$email'";
       $result = $db->query($query);
       $numRecords = $result->num_rows;
       
-      // echo mysqli_num_rows($result);
       if($numRecords > 0)
       {      
         $user_data = $result->fetch_assoc();
-        
         // if password is correct, log user in
         if($user_data['password'] === $password) 
         {
@@ -47,13 +45,14 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
       crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="../scripts/form-validation.js"></script>
+    
   </head>
   <body>
-    <?php include("../includes/header.php"); ?>
+    <?php include("../includes/header2.inc.php"); ?>
 
     <section class="center-items center-self body">
       <h2 class="bold">Login</h2>
+      <script type="text/javascript" src="../scripts/form-validation.js"></script>
       <form id="login" name="login" class="form" action="#" method="post" 
         onsubmit="return validateLogin(this);"
       >

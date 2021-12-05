@@ -1,3 +1,16 @@
+/* 
+COLOR PALETTE -- CSS HEX 
+
+  --aqua-haze: #f4f7f8;
+  --geyser: #cedcdd;
+  --picton-blue: #449fee;
+  --sail: #a8d5f8;
+  --jordy-blue: #8cccf4;
+  --link-water: #cee6f3;
+  --geyser: #dce4e6;
+  
+*/
+
 *{
   margin: 0;
   font-family: Verdana, sans-serif;
@@ -5,8 +18,7 @@
 
 header {
   font-variant: small-caps;
-  height: 3.5vw;
-  display: flex;
+  height: 75px;
   font-weight: bold;
   color: black;
   align-items: center;
@@ -16,7 +28,8 @@ header {
 }
 
 header h1 {
-  font-size: 3vw;
+  font-size: 40px;
+  position: absolute;
   color: black;
   padding: 0 0 0 1vw;
 }
@@ -57,21 +70,27 @@ header a {
   justify-content: center;
 }
 
+/*  header menu items */
+.logo {
+  float:left;
+  padding: 25px 0 5px 20px;
+  color: #449fee;
+}
+
 .hmenu {
   text-align: center;
   float: right;
+  position: absolute;
   top: 6px;
-  right: 10vw;
+  right: 10px;
 }
 .hmenu a {
   color: black;
   text-decoration: none;
-  padding: 0 2vw 0 2vw;
+  padding: 0 3px 0 3px;
 }
 
 .hmenu li {
-  font-size: 1.5vw;
-  width: 10vw;
   background-color: rgb(179, 177, 177);
   border-radius: 10px;
   padding: 0 5px 0 5px;

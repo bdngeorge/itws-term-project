@@ -7,27 +7,24 @@
     die();
   }
 
-  include("../includes/dbconnect.php");
+  include("../includes/dbconnect.inc.php");
 
-  $userEmail= $_SESSION['userEmail'];
-
-  // if ($_SERVER["REQUEST_METHOD"] === 'POST')
   if (isset($_POST['submit']))
   {
+    $userEmail= mysqli_real_escape_string($db, $_SESSION['userEmail']);
 
-    // make title, authors, subject, cond, price required
     $title = htmlspecialchars(trim($_POST['title']));
     $authors = htmlspecialchars(trim($_POST['authors']));
     $isbn  = htmlspecialchars(trim($_POST['isbn']));
-    // from dropdown menu
     $subj  = htmlspecialchars(trim($_POST['subj']));
     $cond  = htmlspecialchars(trim($_POST['cond']));
     $desc  = htmlspecialchars(trim($_POST['desc']));
-    // this is a number
     $price  = htmlspecialchars(trim($_POST['price']));
 
-    // file infomation
-    // new file name
+    $title = mysqli_real_escape_string($db, $title);
+    $authors = mysqli_real_escape_string($db, $authors);
+    $isbn = mysqli_real_escape_string($db, $isbn);
+    $desc = mysqli_real_escape_string($db, $desc);
 
     $fileName = $_FILES['file']['name'];
     $tmploc = $_FILES['file']['tmp_name'];
@@ -38,14 +35,14 @@
 
     $imgExt = array('jpeg', 'jpg', 'png');
 
+
     if (!in_array($fileExt, $imgExt) or !$fileError === 0 or $filesize >= 10000000){
-      echo "Error with file, please upload a different file";
-      die();
+      echo "Error with file, please upload a different file. File must be of typpe jpep, jpg, or png. File size must be under 10MB. Your file size is ";
+      echo $filesize. ".";
     } 
 
     $uploads_dir = "../resources/bookImg";
     $imgIdentifier=  $subj .'-'. rand(999999999, 9999999999).'.'.$fileExt;
-    echo $imgIdentifier;
     move_uploaded_file($tmploc, $uploads_dir.'/'.$imgIdentifier);
 
     $insQuery = "insert into books(imgID, title, authors, isbn, subjectCode, `condition`, `desc`, price, `sellerEmail`) values(?,?,?,?,?,?,?,?,?)";
@@ -55,9 +52,10 @@
     $statement->close();
 
     if ($success) {
-      echo "success";
+      echo "Your file was successfully uploaded";
     } else {
-      echo "Error on server, please try again";
+      echo "Sorry " . $userEmail;
+      echo "There was an error on our server, please try again";
     }
   }
   

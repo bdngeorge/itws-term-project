@@ -1,0 +1,23 @@
+#contents{
+    margin-top: 10px;
+}
+
+.welcome{
+    font-size: 8vh;
+    text-align: center;
+}
+
+.info {
+    margin: 10px;
+    width: 90%;
+}
+
+img{
+    float: left;
+    clear: both;
+    width: 50%;
+}
+
+#welcomeDesc {
+    margin-left: 52%;
+} 
