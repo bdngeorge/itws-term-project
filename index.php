@@ -23,7 +23,7 @@
     </header>
 
     <div id ="body">
-      <h2 class="welcome">Welcome to TextBook Buddy</h2>
+      <h2 class="welcome">Welcome to Textbook Buddy</h2>
       <div class="info">
         <img src="college-textbooks-FB.jpg" alt="textbooks" style="width:45%;">
         <div id="welcomeDesc" style="width:45%;">
