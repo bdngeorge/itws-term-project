@@ -29,7 +29,7 @@
         <div id="welcomeDesc" style="width:45%;">
           <p>Textbooks are expensive.</p> 
           <p>Every semester, students are given a new list of new books to buy.</p> 
-          <p>TestBookBuddy is a place exclusively for RPI students to get together and buy or sell textbooks to each other for a cheaper price. </p>
+          <p>Textbook Buddy is a place exclusively for RPI students to get together and buy or sell textbooks to each other for a cheaper price. </p>
         </div>
       </div>
     </div> 
