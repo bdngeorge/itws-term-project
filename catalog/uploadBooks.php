@@ -70,11 +70,13 @@
   <body>
     <?php include("../includes/header.inc.php"); ?>
     <section class="center-items center-self body" style="margin-top: 20px;">
-      <h2 class="bold"> Sell Book </h2>
+    
 
       <form id="upload" name="login" class="form" 
         method="post" action="uploadBooks.php"  enctype="multipart/form-data" 
         onsubmit="return validateUpload(this);">
+
+        <h2 class="bold"> Sell Book </h2>
 
         <input type="text" id="title" size="200" name="title" placeholder="Title:"></br>
         <input type="text" id="authors" name="authors" placeholder="Authors: (Seperate with commas)"></br>
@@ -112,7 +114,6 @@
           <label class="field" for="file" style="margin-top:20px;color: #f0ebd8;"> <strong>Upload Image</strong> </label>
           <input type="file" id="file" name="file" accept="image/*"></br>
     
-
         <input type="submit" name="submit" value="Submit" style="margin-top:10px">
       </form>
     </section>

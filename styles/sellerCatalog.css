@@ -2,18 +2,14 @@
 #body {
   display: flex;
   justify-content: center;
-  margin-top:150px;
-}
-
-#upload {
-  padding: 10px;
-  margin-top:150px;
+  margin-top:50px;
 }
 
 #books {
   width: 80%;
+  height: 100%;
   margin-left: 20px;
-  border: 4px solid #5b769c; 
+  border: 4px solid #1d2d44; 
   background-color: #1d2d44;
   color: #f0ebd8;
 }
