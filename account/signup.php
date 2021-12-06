@@ -24,7 +24,7 @@
     if ($success) {
       header("Location: login.php");
     } else {
-      echo "this email address is already on file";
+      echo "<script> alert('this email address is already on file'); </script>";
     }
   }
 
@@ -43,7 +43,7 @@
     <?php include("../includes/header2.inc.php"); ?>
     <section class="center-items center-self body">
       <h2 class="bold">Sign Up</h2>
-      <form name="signup" class="form" action="#" method="post"
+      <form name="signup" class="form" action="signup.php" method="post"
       onsubmit="return validateSignUp(this);">
         <input type="text" id="fname" name="fname" placeholder="First Name:" class="left"><br>
         <input type="text" id="lname" name="lname" placeholder="Last Name:" class="left"><br>

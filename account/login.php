@@ -27,7 +27,7 @@
           die;
         } 
       }
-      echo "<script>alert(your password or username is incorrect);<script>";
+      echo "<script> alert('your password or username is incorrect'); </script>";
     } 
   }
 
@@ -45,6 +45,7 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
       crossorigin="anonymous">
     </script>
+
     <script type="text/javascript" src="../scripts/form-validation.js"></script>
     
   </head>
@@ -54,7 +55,7 @@
     <section class="center-items center-self body">
       <h2 class="bold">Login</h2>
       <script type="text/javascript" src="../scripts/form-validation.js"></script>
-      <form id="login" name="login" class="form" action="#" method="post" 
+      <form id="login" name="login" class="form" action="login.php" method="post" 
         onsubmit="return validateLogin(this);"
       >
         <input type="email" id="email" name="email" placeholder="RPI Email:" class="left"><br>

@@ -36,7 +36,7 @@
     $imgExt = array('jpeg', 'jpg', 'png');
 
     if (!in_array($fileExt, $imgExt) or !$fileError === 0 or $filesize >= 10000000){
-      echo "<script>alert(Error with file, please upload a different file. File must be of typpe jpep, jpg, or png. File size must be under 10MB.);<script>";
+      echo "<script> alert('Error with file, please upload a different file. File must be of typpe jpep, jpg, or png. File size must be under 10MB.'); </script>";
     } 
 
     $uploads_dir = "../resources/bookImg";

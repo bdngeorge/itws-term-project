@@ -8,7 +8,7 @@
         if ($success) {
             header("Location: sellerCatalog.php");
         } else {
-            echo "<div class = 'center-text'> 
+            echo "<div> 
                     Your book was not deleted. Please try again
                   </div>";
 
