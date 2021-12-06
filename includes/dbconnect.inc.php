@@ -3,7 +3,7 @@
 
   $dbhost = 'localhost';
   $dbuser = 'root';
-  $dbpassword = 'root';
+  $dbpassword = '';
   $dbname = 'textbook_buddy';
 
   @ $db = new mysqli($dbhost, $dbuser, $dbpassword, $dbname);

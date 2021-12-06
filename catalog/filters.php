@@ -1,10 +1,7 @@
 <?php 
   include ('../includes/dbconnect.inc.php'); 
-  $where = array();
-?>
 
-<?php 
-  
+  $where = array();
   if (isset($_POST['cond'])) {
     $conds = array();
 		foreach ($_POST['cond'] as $cond) :
@@ -31,8 +28,8 @@
     $sqlcond = "price <= $priceCeil";
     array_push($where, $sqlcond);
   } 
-
 ?>
+
 <div id="sidebar">
 
 
